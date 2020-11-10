@@ -1,10 +1,10 @@
-# React 프로그래밍 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/SK_logo.svg/326px-SK_logo.svg.png" alt="SK" style="height: 1.4em">
+# React 프로그래밍 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/SK_logo.svg/326px-SK_logo.svg.png" alt="SK" height="46" />
 
 React 프로그래밍 2020 학습 저장소
 
 일정 | 시간 | 장소
 --- | --- | ---
-11/16(월) ~ 11/18(수), 3일(21시간) | 09:30 ~ 17:30 | [서울 종로구 우정국로 26 종로 센트로폴리스 빌딩, 9층 Digital Lab 교육장](https://bit.ly/sk-sentro)
+11/16(월) ~ 18(수), 7H/일 | 09:30 ~ 17:30 | [서울 종로 센트로폴리스 빌딩, 9층 Digital Lab 교육장](https://bit.ly/sk-sentro)
 
 <br/>
 
