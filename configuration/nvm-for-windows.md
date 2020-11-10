@@ -5,7 +5,7 @@
 학습 과정에 사용되는 런타임 환경은 [Node.js](https://nodejs.org/ko/)입니다. 
 버전 관리를 효과적으로 하기 위해 [nvm-setup.zip](https://github.com/coreybutler/nvm-windows/releases) 파일을 다운로드 받아 설치합니다.
 
-![](https://이듬.run/preparing-for-class/nvm-02.jpg)
+![](https://bit.ly/35hqLss)
 
 <!-- <br/> -->
 
