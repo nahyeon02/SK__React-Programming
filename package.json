@@ -1,0 +1,9 @@
+{
+  "name": "sk-react-programming",
+  "version": "0.0.1",
+  "author": "yamoo9 <yamoo9@euid.dev>",
+  "scripts": {
+    "vsce:i": "cat .vscode-extensions | xargs -L1 code --install-extension",
+    "vsce:p": "code --list-extensions --show-versions"
+  }
+}
