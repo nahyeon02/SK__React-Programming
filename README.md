@@ -17,7 +17,6 @@ React 프로그래밍 2020 학습 저장소
 - [Windows 10, WSL Bash 명령어 환경 구성](./configuration/wsl-bash-command-env.md)
 - [Visual Studio Code & 확장](./configuration/vscode-extensions.md)
 - [React 러닝 가이드 E-Book](https://yamoo9.github.io/react-master)
-- [React 프로그래밍 학습 브랜치](lecture)
 
 <br/>
 
