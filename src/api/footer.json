@@ -1,0 +1,59 @@
+{
+  "name": "이디야 커피 사이트 디자인(학습용) 푸터 내비게이션 목록 데이터",
+  "description": "이듬(E.UID) 블렌디드 러닝 실습 교육에 활용되는 푸터 내비게이션 목록 JSON 데이터입니다.",
+  "author": "야무(yamoo9)",
+  "email": "yamoo9@euid.dev",
+  "version": "0.0.1",
+  "data": {
+    "contactInfo": {
+      "address": "서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17)",
+      "tel":"02-543-6467",
+      "fax":"02-543-7191",
+      "companyRegistrationNumber": "107-86-16302",
+      "mailOrderBusinessReport": "강남 제 002519호",
+      "CEO": "문창기"
+    },
+    "navigation": [
+      {
+        "id": "footer-iwe3u",
+        "link": "#policy",
+        "text": "개인정보처리방침"
+      },
+      {
+        "id": "footer-qzo2n",
+        "link": "#members",
+        "text": "멤버스 이용약관"
+      },
+      {
+        "id": "footer-iwe9q",
+        "link": "#affiliate",
+        "text": "가맹 안내"
+      },
+      {
+        "id": "footer-iwe0x",
+        "link": "#coupon",
+        "text": "대량쿠폰구매"
+      },
+      {
+        "id": "footer-iwe1r",
+        "link": "#hire",
+        "text": "채용안내"
+      },
+      {
+        "id": "footer-iwe2w",
+        "link": "#customer",
+        "text": "고객의 소리"
+      },
+      {
+        "id": "footer-qop7l",
+        "link": "#sitemap",
+        "text": "사이트맵"
+      },
+      {
+        "id": "footer-qco3u",
+        "link": "#storekeeper",
+        "text": "점주의 방"
+      }
+    ]
+  }
+}

@@ -1,0 +1,339 @@
+/* 음료 애니메이션 Keyframes */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+/* main.home (main 요소) */
+/* home 이디야 추천 메뉴 섹션 그룹 컨테이너 */
+.ediyaRecommend__container {
+  padding-bottom: 165px;
+}
+/* home 이디야 추천 메뉴 섹션 */
+.ediyaRecommend {
+  text-align: center;
+  color: #14182c;
+  background-color: #bae5fb;
+  padding: 42px 0 20px;
+}
+
+/* home 이디야 추천 메뉴 영문 텍스트 */
+.ediyaRecommend__text[lang="en"] {
+  font-size: 25px;
+  font-weight: 100;
+}
+/* home 이디야 추천 메뉴 영문 텍스트 내 강조 */
+.ediyaRecommend__text[lang="en"] em {
+  display: block;
+  font-size: 31px;
+  font-weight: 700;
+  font-style: normal;
+  color: #24388d;
+}
+/* home 이디야 추천 메뉴 영문 텍스트 아래 구분선 */
+.ediyaRecommend__text[lang="en"]::after {
+  content: "";
+  display: block;
+  width: 40px;
+  border-top: 1px solid #000;
+  margin: 15px auto;
+}
+/* home 이디야 추천 메뉴 텍스트 */
+.ediyaRecommend__text {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+}
+/* home 이디야 추천 음료 배치 및 애니메이션 */
+.ediyaRecommend__list {
+  position: relative;
+}
+
+.ediyaRecommend__beverage {
+  position: absolute;
+}
+/* home 이디야 추천 쉐이크 음료 이미지 */
+.ediyaRecommend__beverage img {
+  width: 100%;
+  height: 100%;
+  animation: bounce 600ms ease-in-out infinite alternate;
+}
+/* home 이디야 추천 쉐이크 음료 이미지 (두 이미지 간의 delay를 지정) */
+.ediyaRecommend__beverage:last-child img {
+  animation-delay: 400ms;
+}
+/* home 이디야 추천 쉐이크 음료 이름 (텍스트 영역) */
+.ediyaRecommend__beverageName {
+  position: absolute;
+}
+.ediyaRecommend__beverageName.cheese {
+  bottom: 60px;
+  left: 0;
+}
+.ediyaRecommend__beverageName.choco {
+  top: 180px;
+  left: -75px;
+}
+.ediyaRecommend__beverageName.rice {
+  bottom: -20px;
+  left: 0;
+}
+.ediyaRecommend__beverageName [class^='ediyaRecommend__beverageName'] {
+  display: block;
+  text-align: right;
+}
+[class^='ediyaRecommend__beverageName--ko'] {
+  font-size: 1.6rem;
+}
+[class^='ediyaRecommend__beverageName--en'] {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+.ediyaRecommend__beverageName--ko-primary {
+  color: #2c68ae;
+  font-weight: 700;
+}
+.ediyaRecommend__beverageName--ko-secondary {
+  color: #72bde3;
+}
+.ediyaRecommend__beverageName--en-accent {
+  color: #a7d1e7;
+}
+/* home 이디야 추천 메뉴 링크 */
+.ediyaRecommend .go-menu {
+  user-select: none;
+  display: block;
+  width: 91px;
+  height: 31px;
+  line-height: 31px;
+  margin: 0 auto;
+  border: 1px solid #24388d;
+  color: #24388d;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.ediyaRecommend .go-menu:hover {
+  background: #24388d;
+  color: #ffffff;
+}
+/* ---------------------------- */
+
+/* home 이디야 유튜브 동영상 섹션 */
+.ediyaSection__container.iframeContainer {
+  /* padding-top: 56.25%; */
+  padding-top: 58%;
+}
+/* ---------------------------- */
+
+/* home 이디야 공지사항 섹션 */
+.ediyaNotice {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+}
+/* home 이디야 공지사항 섹션 제목 (h2 요소) */
+.ediyaNotice__headline {
+  min-width: 125px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fefefe;
+  padding: 15px 0 0 15px;
+  margin: 0;
+  background: linear-gradient(137.4deg, #263d83 3.86%, #102457 100%);
+}
+/* home 이디야 공지사항 내 기사 섹션 (article 요소) */
+.ediyaNotice__article {
+  flex-grow: 1;
+  padding: 16px 20px 16px 15px;
+  background: #fefefe;
+}
+/* home 이디야 공지사항 내 기사 섹션 내 제목 (h3 요소) */
+.ediyaNotice__articleHeadline {
+  font-size: 16px;
+  font-weight: 700;
+  color: #24388d;
+  margin: 0;
+}
+/* home 이디야 공지사항 내 기사 섹션 내 날짜 (time 요소) */
+.ediyaNotice__articleDate {
+  font-size: 12px;
+  color: #878787;
+}
+/* home 이디야 공지사항 내 기사 섹션 내 텍스트 (p 요소) */
+.ediyaNotice__articleText {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #14182c;
+  letter-spacing: -0.05em;
+  margin: 10px 0 0 0;
+}
+/* home 이디야 공지사항 내 버튼 컨테이너 (div 요소) */
+.ediyaNotice .buttonContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 84px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+/* home 이디야 공지사항 내 버튼 공통 (button 요소) */
+.ediyaNotice .button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+/* ---------------------------- */
+
+/* home 이디야 뉴스 섹선 */
+.ediyaNews {
+  position: relative;
+  background-color: #24388d;
+  color: #fefefe;
+  font-size: 13px;
+  padding: 15px;
+}
+/* home 이디야 뉴스 섹선 제목 (h2 요소) */
+.ediyaNews__headline {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+}
+/* home 이디야 뉴스 섹선 아이템 (li 요소) */
+.ediyaNews__item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 5px;
+}
+/* home 이디야 뉴스 섹선 첫번째 아이템 (li:first-child 요소) */
+.ediyaNews__item:first-child {
+  margin-top: 0;
+}
+/* home 이디야 뉴스 섹선 아이템 링크 (a 요소) */
+.ediyaNews__subject {
+  flex-grow: 1;
+  margin-right: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* home 이디야 뉴스 섹선 아이템 날짜 (time 요소) */
+.ediyaNews__date {
+  min-width: 62px;
+  font-size: 12px;
+}
+/* home 이디야 뉴스 섹선 더보기 링크 (a 요소) */
+.ediyaNews .iconMore {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* Mobile UI 적용을 위한 Breakpoint */
+@media all and (max-width: 767px) {
+  /* home 이디야 추천 음료 배치 */
+  .ediyaRecommend__list {
+    margin: 0 20px;
+  }
+  /* 치즈가 쿠키했대 쉐이크 */
+  .ediyaRecommend__beverage:first-child {
+    display: none;
+  }
+  /* 초코 묻고 더블 쉐이키와 밥대신 라이스 쉐이크 */
+  .ediyaRecommend__beverage:last-child {
+    width: 225px;
+    height: 160px;
+    top: 40px;
+    left: 53%;
+    transform: translateX(-50%);
+  }
+  /* home 이디야 추천 쉐이크 음료 이름 (텍스트 영역) */
+  .ediyaRecommend__beverageName.choco {
+    top: 70px;
+    left: -80px;
+    bottom: initial;
+    transform: scale(0.8);
+  }
+  .ediyaRecommend__beverageName.rice {
+    width: 100px;
+    top: 48px;
+    left: 160px;
+    transform: scale(0.8);
+  }
+  .ediyaRecommend__beverageName.rice span {
+    text-align: left;
+  }
+}
+
+/* ---------------------------- */
+/* Desktop UI 적용을 위한 Breakpoint */
+@media all and (min-width: 768px) {
+  /* home 이디야 추천 메뉴 섹션 그룹 컨테이너 */
+  .ediyaRecommend__container {
+    padding-bottom: 210px;
+  }
+  /* home 이디야 추천 메뉴 섹션 */
+  .ediyaRecommend {
+    padding: 50px 0 36px;
+  }
+  /* home 이디야 추천 메뉴 영문 텍스트 */
+  .ediyaRecommend__text[lang="en"] {
+    font-size: 31px;
+  }
+  /* home 이디야 추천 메뉴 영문 텍스트 내 강조 */
+  .ediyaRecommend__text[lang="en"] em {
+    display: inline;
+    margin-left: 0.15em;
+  }
+  /* home 이디야 추천 메뉴 영문 텍스트 아래 구분선 */
+  .ediyaRecommend__text[lang="en"]::after {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  /* home 이디야 추천 음료 배치 */
+  .ediyaRecommend__list {
+    min-width: 740px;
+    max-width: 740px;
+    margin: 0 auto;
+    position: relative;
+  }
+  /* 치즈가 쿠키했대 쉐이크 */
+  .ediyaRecommend__beverage:first-child {
+    left: 0;
+    top: 50%;
+    transform: translateY(-25%);
+  }
+  /* 초코 묻고 더블 쉐이키와 밥대신 라이스 쉐이크 */
+  .ediyaRecommend__beverage:last-child {
+    right: 0;
+    top: 50%;
+    transform: translate(180px, -20%);
+  }
+
+  /* home 이디야 추천 메뉴 링크 */
+  .ediyaRecommend .go-menu {
+    width: 103px;
+    margin-top: 38px;
+  }
+  /* ---------------------------- */
+
+  /* .home__youtube, .home__notice, .home__news 섹션 영역을 그룹으로 묶은 컨테이너 */
+  .ediyaSection__container:not(.iframeContainer) {
+    background-color: #f5f5f5;
+    padding: 62px 0 63px;
+    display: flex;
+    justify-content: center;
+  }
+  /* home 유튜브 섹션 */
+  .ediyaYoutube {
+    width: 365px;
+  }
+  /* .home__notice, .home__notice 섹션 영역 배치를 위해 그룹으로 묶은 컨테이너 */
+  .ediyaInfo__container {
+    width: 375px;
+  }
+}

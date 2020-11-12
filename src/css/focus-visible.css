@@ -1,0 +1,22 @@
+:focus {
+  outline: 0;
+  box-shadow: 0 0 0 4px rgba(20, 37, 189, 0.7);
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible),
+.js-focus-visible :focus:not(.focus-visible) {
+  box-shadow: none;
+}
+
+:focus-visible,
+.js-focus-visible .focus-visible {
+  box-shadow: 0 0 0 4px rgba(20, 37, 189, 0.7);
+  border-radius: 2px;
+}
+
+.appFooter :focus-visible,
+.js-focus-visible .appFooter .focus-visible {
+  box-shadow: 0 0 0 4px rgba(82, 98, 248, 0.9);
+  border-radius: 2px;
+}

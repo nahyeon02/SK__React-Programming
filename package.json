@@ -1,9 +1,19 @@
 {
-  "name": "sk-react-programming",
-  "version": "0.0.1",
-  "author": "yamoo9 <yamoo9@euid.dev>",
+  "name": "learn-ui--ediya-site",
+  "version": "1.0.0",
+  "description": "이듬(E.UID)블렌디드 러닝, 학습용(디자인 → 개발)으로 제작된 `이디야 커피 브랜드 사이트`입니다.",
   "scripts": {
-    "vsce:i": "cat .vscode-extensions | xargs -L1 code --install-extension",
-    "vsce:p": "code --list-extensions --show-versions"
+    "start": "npm run serve",
+    "serve": "npm run clean && parcel serve src/index.html src/views/*.html",
+    "clean": "rimraf -rf .cache dist build",
+    "clean:all": "rimraf -rf .cache dist build node_modules",
+    "build": "npm run clean && npm run build:building && npm run build:test",
+    "build:building": "parcel build src/index.html src/views/*.html --out-dir build --no-source-maps --no-content-hash --experimental-scope-hoisting",
+    "build:test": "live-server build"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2"
   }
 }

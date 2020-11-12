@@ -1,0 +1,100 @@
+{
+  "name": "이디야 커피 사이트 디자인(학습용) 홈페이지 데이터",
+  "description": "이듬(E.UID) 블렌디드 러닝 실습 교육에 활용되는 홈페이지 JSON 데이터입니다.",
+  "author": "야무(yamoo9)",
+  "email": "yamoo9@euid.dev",
+  "version": "0.0.1",
+  "data": {
+    "recommendContainer": {
+      "headline": "이디야 커피의 다양한 메뉴",
+      "recommendText": {
+        "en": "ALWAYS BESIDE YOU<em>EDIYA COFFEE</em>",
+        "ko": "늘 당신 곁에, 이디야 커피의 다양한 메뉴를 맛보세요."
+      },
+      "recommendList": [
+        {
+          "id": "rec-wo1",
+          "image": "assets/images/cheese-cookie-img.png",
+          "names": [
+            {
+              "id": "rect-wo11",
+              "className": "cheese",
+              "contents": {
+                "id": "rec-wo1-1",
+                "ko": {
+                  "primary": "치즈가 쿠키했대",
+                  "secondary": "쉐이크"
+                },
+                "en": "Cheese Shake"
+              }
+            }
+          ]
+        },
+        {
+          "id": "rec-wo2",
+          "image": "assets/images/choco-rice-img.png",
+          "names": [
+            {
+              "id": "rec-wo21",
+              "className": "choco",
+              "contents": {
+                "id": "rec-wo2-1",
+                "ko": {
+                  "primary": "초코 묻고 더블",
+                  "secondary": "쉐이크"
+                },
+                "en": "Choco Shake"
+              }
+            },
+            {
+              "id": "rec-wo22",
+              "className": "rice",
+              "contents": {
+                "id": "rec-wo2-2",
+                "ko": {
+                  "primary": "밥대신 라이스",
+                  "secondary": "쉐이크"
+                },
+                "en": "Rice Shake"
+              }
+            }
+          ]
+        }
+      ],
+      "CTA": {
+        "link": "/views/beverage.html",
+        "text": "메뉴 보기"
+      }
+    },
+    "sectionContainer": {
+      "youtubePlayer": {
+        "id": "ediyaYoutube-wkd9",
+        "headline": "이디야 유튜브 영상",
+        "title": "youtube 프로모션 wkd9",
+        "label": "[이디야커피] 고객감사 영상",
+        "src": "https://www.youtube.com/embed/UGPo0RqhbKU",
+        "poster": "assets/images/youtube-cover.jpg"
+      },
+      "notice": [
+        {
+          "id": "notice-dkcs-1",
+          "headline": "이디야멤버스가 새로워집니다.",
+          "date": "2020.04.25",
+          "content": "이디야멤버스에 새로운 기능이 추가됩니다. 추가되는 고객등급제, 이디야카드, 스마트오더, 선물하기를 확인하세요.​ "
+        },
+        {
+          "id": "notice-dkcs-2",
+          "headline": "서버 보안 강화로 인한 홈페이지 이용 제한 안내",
+          "date": "2020.08.14",
+          "content": "이디야커피 홈페이지의 서버 보안 강화 작업을 위해 아래 기간동안 홈페이지 접속이 제한될 예정입니다."
+        },
+        {
+          "id": "notice-dkcs-3",
+          "headline": "이디야 브이로그 촬영 관련 안내",
+          "date": "2020.10.18",
+          "content": "매장 브이로그 촬영 및 배포(업로드) 행위는 음료 레시피, 기계설비와 바 내부 구성, 일반관리 업무 등 이디야커피의 영업비밀을 비롯한 각종 지식재산권이 침해될 수 있기에 전면 불허하고 있습니다."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이디야 커피(Ediya Coffee)</title>
+    <meta name="description" content="이디야 커피 브랜드 사이트 (학습용) 홈페이지입니다." />
+    <meta name="keywords" content="이디야, 커피, 브랜드, 사이트, 학습용, 홈페이지, 이듬, 블렌디드 러닝" />
+    <meta name="author" content="이듬(E.UID)" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- 스타일링 -->
+    <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- 스크립트: 즉시 실행 -->
+    <script src="./js/controls/polyfillsControl.js"></script>
+
+    <!-- 스크립트: DOM 콘텐츠 준비 이후 실행 -->
+    <script src="./js/controls/navigationControl.js" defer></script>
+    <script src="./js/controls/goToTopControl.js" defer></script>
+  </head>
+
+  <body>
+
+    <div class="appHeader__container">
+      <header class="appHeader">
+        <h1 class="appHeader__brand" lang="en">
+          <a href="./index.html"><img src="./images/brand.svg" alt="Ediya Coffee" class="response" /></a>
+        </h1>
+        <button type="button" class="button appNavigation__button--open" aria-label="메뉴 열기" title="메뉴 열기">
+          <span class="ir" />
+        </button>
+        <nav class="appNavigation">
+          <h2 class="a11yHidden">메인 메뉴</h2>
+
+          <ul class="resetList">
+            <!-- 비동기 데이터 바인딩 → 내비게이션 리스트 렌더링 (아래 템플릿 코드 활용) -->
+          </ul>
+          <script type="text/template" id="template__navigationList">
+            <li data-id="{item.id}"><a href="{item.link}">{item.text}</a></li>
+          </script>
+
+          <button type="button" class="button appNavigation__button--close" title="메뉴 닫기" aria-label="메뉴 닫기">
+            <span class="close" aria-hidden="true">×</span>
+          </button>
+        </nav>
+      </header>
+    </div>
+
+    <main class="appMain home">
+      <div class="ediyaRecommend__container">
+        <section class="ediyaRecommend">
+          <h2 class="a11yHidden">이디야 커피의 다양한 메뉴</h2>
+          <p class="ediyaRecommend__text" lang="en">ALWAYS BESIDE YOU<em>EDIYA COFFEE</em></p>
+          <p class="ediyaRecommend__text">늘 당신 곁에, 이디야 커피의 다양한 메뉴를 맛보세요.</p>
+          <ul class="ediyaRecommend__list resetList">
+            <li class="ediyaRecommend__beverage">
+              <img src="./images/cheese-cookie.png" alt="" />
+              <div class="ediyaRecommend__beverageName cheese">
+                <span class="ediyaRecommend__beverageName--ko-primary">치즈가 쿠키했대</span>
+                <span class="ediyaRecommend__beverageName--ko-secondary">쉐이크</span>
+                <span class="ediyaRecommend__beverageName--en-accent">Cheese Shake</span>
+              </div>
+            </li>
+            <li class="ediyaRecommend__beverage">
+              <img src="./images/choco-rice.png" alt="" />
+              <div class="ediyaRecommend__beverageName choco">
+                <span class="ediyaRecommend__beverageName--ko-primary">초코 묻고 더블</span>
+                <span class="ediyaRecommend__beverageName--ko-secondary">쉐이크</span>
+                <span class="ediyaRecommend__beverageName--en-accent">Choco Shake</span>
+              </div>
+              <div class="ediyaRecommend__beverageName rice">
+                <span class="ediyaRecommend__beverageName--ko-primary">밥대신 라이스</span>
+                <span class="ediyaRecommend__beverageName--ko-secondary">쉐이크</span>
+                <span class="ediyaRecommend__beverageName--en-accent">Rice Shake</span>
+              </div>
+            </li>
+          </ul>
+          <a href="./views/beverage.html" class="go-menu">메뉴보기</a>
+        </section>
+      </div>
+
+      <div class="ediyaSection__container">
+        <section class="ediyaYoutube">
+          <h2 class="a11yHidden">이디야 유튜브 영상</h2>
+          <figure class="ediyaSection__container iframeContainer">
+            <iframe 
+              style="background: url(./images/youtube-cover.jpg) no-repeat center center / cover" 
+              src="https://youtube.com/embed/UGPo0RqhbKU" 
+              allowfullscreen 
+              aria-labelledby="ediyaYoutube" />
+            <figcaption class="a11yHidden" id="ediyaYoutube">[이디야커피] 고객감사 영상</figcaption>
+          </figure>
+        </section>
+
+        <div class="ediyaInfo__container">
+          <section class="ediyaNotice">
+            <h2 class="ediyaNotice__headline">NOTICE</h2>
+            <article class="ediyaNotice__article">
+              <h3 class="ediyaNotice__articleHeadline">이디야멤버스가 새로워집니다.</h3>
+              <time class="ediyaNotice__articleDate" datetime="2020-04-25T16:31:04">2020.04.25</time>
+              <p class="ediyaNotice__articleText">이디야멤버스에 새로운 기능이 추가됩니다. 추가되는 고객등급제, 이디야카드, 스마트 ...</p>
+            </article>
+            <div class="buttonContainer">
+              <button class="button button--prev">
+                <svg width="16" height="16" viewbox="0 0 16 16" fill="none">
+                  <title>이전 공지사항 보기</title>
+                  <rect x="0.5" y="0.5" width="15" height="15" stroke="#F5F5F5" />
+                  <path d="M9.25 10.5L6.75 8L9.25 5.5" stroke="#F5F5F5" />
+                </svg>
+              </button>
+              <button class="button button--next">
+                <svg width="16" height="16" viewbox="0 0 16 16" fill="none">
+                  <title>다음 공지사항 보기</title>
+                  <rect x="-0.5" y="0.5" width="15" height="15" transform="matrix(-1 0 0 1 15 0)" stroke="#F5F5F5" />
+                  <path d="M6.75 10.5L9.25 8L6.75 5.5" stroke="#F5F5F5" />
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="ediyaNews">
+            <h2 class="ediyaNews__headline" lang="en">NEWS</h2>
+            <ul class="ediyaNews__list resetList">
+              <li class="ediyaNews__item">
+                <a class="ediyaNews__subject" href="#">[MTN] 이디야커피, 조각 케이크 2종 출시 디저트 강화</a>
+                <time class="ediyaNews__date" datetime="2020-09-08T11:54:25">2020.09.08</time>
+              </li>
+              <li class="ediyaNews__item">
+                <a class="ediyaNews__subject" href="#">[아시아경제] 이디야커피, '비니스트 커피믹스 ...</a>
+                <time class="ediyaNews__date" datetime="2020-08-27T13:17:54">2020.08.27</time>
+              </li>
+            </ul>
+            <a href="./views/news.html" class="iconMore">
+              <svg width="16" height="16" viewbox="0 0 16 16" fill="none">
+                <title>이디야 뉴스 더보기</title>
+                <rect x="0.5" y="0.5" width="15" height="15" stroke="#F5F5F5" />
+                <path d="M5 8.02114H11M8.05331 5L8.05331 11" stroke="#F5F5F5" />
+              </svg>
+            </a>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="appFooter">
+      <div class="appFooter__container">
+        <div class="appFooter__brand" lang="en">
+          <img src="./images/brand-dark.svg" alt="EDIYA COFFEE" />
+        </div>
+        <ul class="appFooter__guideList resetList">
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">멤버스 이용약관</a></li>
+          <li><a href="#">가맹 안내</a></li>
+          <li><a href="#">대량쿠폰구매</a></li>
+          <li><a href="#">채용안내</a></li>
+          <li><a href="#">고객의 소리</a></li>
+          <li><a href="#">사이트맵</a></li>
+          <li><a href="#">점주의 방</a></li>
+        </ul>
+        <address class="appFooter__address">
+          <span>서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17)</span>
+          <span><b>TEL : </b>02-543-6467</span>
+          <span><b>FAX : </b>02-543-7191</span>
+          <span><b>사업자등록번호 : </b>107-86-16302</span>
+          <span><b>통신판매업 신고 : </b>강남 제 002519호</span>
+          <span><b>대표이사 : </b>문창기</span>
+        </address>
+        <small class=".appFooter__copyright">&copy; 2017 EDIYA COFFEE COMPANY. ALL RIGHTS RESERVED..</small>
+      </div>
+    </footer>
+
+    <!-- IGNORE ----------------------------------------------------------------------- -->
+
+    <div hidden data-description="Parcel 번들 시, HTML 링크가 없을 경우 제대로 작동하지 않는 문제 발견하여 이렇게 처리하여 해결">
+      <a href="./views/signup.html">signup</a>
+      <a href="./views/ui-design.html">ui-design</a>
+      <a href="./views/store.html">store</a>
+    </div>
+
+    <!-- IGNORE ----------------------------------------------------------------------- -->
+
+  </body>
+
+</html>
