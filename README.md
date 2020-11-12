@@ -16,7 +16,21 @@ React 프로그래밍 2020 학습 저장소
 - [Node.js 런타임 설치 (NVM4W 활용)](./configuration/nvm-for-windows.md)
 - [Windows 10, WSL Bash 명령어 환경 구성](./configuration/wsl-bash-command-env.md)
 - [Visual Studio Code & 확장](./configuration/vscode-extensions.md)
-- [React 러닝 가이드 E-Book](https://yamoo9.github.io/react-master)
+
+<br/>
+
+## 학습 문서
+
+학습에 사용되는 참고 문서(Reference E-Book)입니다.
+
+- [React 공식 문서](https://reactjs.org)
+- [<abbr title="Create React App">CRA</abbr> 공식 문서](https://create-react-app.dev)
+- [Redux 공식 문서](https://redux.js.org)
+- [React Redux 공식 문서](https://react-redux.js.org)
+- [React Router 공식 문서](https://reactrouter.com)
+- [야무의 React 러닝 가이드 E-Book (with 영상 강의)](https://yamoo9.github.io/react-master)
+- [이듬(E.UID) <img src="https://cdn.iconscout.com/icon/free/png-256/youtube-85-226402.png" title="유투브" alt="Youtube" height="18" valign="middle" />](https://youtube.com/이듬)
+- [AOA11Y <img src="https://cdn.iconscout.com/icon/free/png-256/youtube-85-226402.png" title="유투브" alt="Youtube" height="18" valign="middle" />](https://youtube.com/aoa11y)
 
 <br/>
 
@@ -38,7 +52,7 @@ React 프로그래밍 학습 세부 커리큘럼은 아래와 같고, 상황에 
   - 전달 속성(props) 검사
   - 컴포넌트 통신(부모 ←→ 자식), 상태 리프팅 업
   - 이벤트 핸들링 (이벤트 속성에 이벤트 리스너 연결)
-  - 접근성 (<abbr title="Accessibility">A11Y</abbr>) & 자동 검사 도구(React-axe)
+  - 접근성 (<abbr title="Accessibility">A11Y</abbr>) & 자동 검사 도구(<del>React-axe</del> [@axe-core/react](https://www.npmjs.com/package/@axe-core/react))
 </details>
 
 <br/>
