@@ -2,9 +2,9 @@
 
 React 프로그래밍 2020 학습 저장소
 
-일정 | 시간 | 장소
---- | --- | ---
-11/16(월) ~ 18(수), 7H/일 | 09:30 ~ 17:30 | [서울 종로 센트로폴리스 빌딩, 9층 Digital Lab 교육장](https://bit.ly/sk-sentro)
+일정 | 시간 | 장소 | 비고
+--- | --- | --- | ---
+11/16(월) ~ 18(수), 7H/일 | 09:30 ~ 17:30 | [서울 종로 센트로폴리스 빌딩, 9층 Digital Lab 교육장](https://bit.ly/sk-sentro) | 노트북, 신분증 지참
 
 <br/>
 
@@ -25,7 +25,7 @@ React 프로그래밍 2020 학습 저장소
 React 프로그래밍 학습 세부 커리큘럼은 아래와 같고, 상황에 따라 안내된 내용과 다소 다르게 수업 내용이 진행될 수 있습니다.
 
 <details open>
-  <summary>1일차</summary>
+  <summary>🎯 1일차</summary>
   <br/>
 
   - React 개발 환경 구성
@@ -37,14 +37,14 @@ React 프로그래밍 학습 세부 커리큘럼은 아래와 같고, 상황에 
   - 컴포넌트 전달 속성, 상태, 라이프 사이클 훅
   - 전달 속성(props) 검사
   - 컴포넌트 통신(부모 ←→ 자식), 상태 리프팅 업
-  - 이벤트 핸들링
-  - 접근성 (Accessibility) & 자동 검사 도구(React-axe)
+  - 이벤트 핸들링 (이벤트 속성에 이벤트 리스너 연결)
+  - 접근성 (<abbr title="Accessibility">A11Y</abbr>) & 자동 검사 도구(React-axe)
 </details>
 
 <br/>
 
 <details>
-  <summary>2일차</summary>
+  <summary>🎯 2일차</summary>
   <br/>
 
   - React 고차 컴포넌트 (HOC)
@@ -63,7 +63,7 @@ React 프로그래밍 학습 세부 커리큘럼은 아래와 같고, 상황에 
 <br/>
 
 <details>
-  <summary>3일차</summary>
+  <summary>🎯 3일차</summary>
   <br/>
 
   - React Router 라이브러리
