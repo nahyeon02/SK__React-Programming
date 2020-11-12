@@ -22,7 +22,7 @@
 - PropTypes 전달 속성 검사
 - `props`를 통한 컴포넌트 통신
 - Context API를 사용한 컴포넌트 통신
-- 앱 접근성(A11Y) 테스트
+- React 앱 접근성(A11Y) 테스트
 
 ### Create React App
 
@@ -78,17 +78,12 @@ Axe 접근성 테스트 결과로 표시할 언어를 [한글(ko)](https://githu
 > 보다 자세한 구성 설정은 [매개변수](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#parameters-1) 문서를 참고하세요.
 
 ```js
+import ko from 'axe-core/locales/ko.json';
+
 const AXE_CONFIG = {
-  // 브랜딩 설정 (선택사항)
-  branding: {
-    brand: '이듬(E.UID)',
-    application: '블렌디드 러닝',
-  },
-  // 리포터 설정 (v2 = 최신, 선택사항)
-  repoter: 'v2',
   // Axe의 로컬라이제이션 (선택사항)
   // 로컬라이제이션 설정은 아래 참고 링크 확인
-  locale: { lang: 'ko' },
+  locale: { lang: ko },
   // Axe 검사 규칙 설정 (사용자 정의, 선택사항)
   // 사용 가능한 규칙은 아래 참고 링크 확인
   rules: [
@@ -109,7 +104,7 @@ const AXE_CONTEXT = {
   exclude: [['제외 할 CSS 선택자', '.exclude-axe-test']],
 };
 
-axe(React, ReactDOM, TIMEOUT, AXE_CONFIG, /* AXE_CONTEXT */);
+axe(React, ReactDOM, TIMEOUT, AXE_CONFIG, AXE_CONTEXT);
 ```
 
 #### 참고 링크
