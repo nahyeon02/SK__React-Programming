@@ -120,8 +120,8 @@ axe(React, ReactDOM, TIMEOUT, AXE_CONFIG, AXE_CONTEXT);
 > React 프레임워크 개발에 앞서 다음 프로세스가 수행되었습니다. 각 파트는 이듬 블렌디드 러닝의 [UI Structure & Design](https://euid.dev/#/courses/ui-structure-design),
 > [UI Interaction Junior](https://euid.dev/#/courses/ui-interaction-junior), [UI Interaction Senior](https://euid.dev/#/courses/ui-interaction-senior)에서 주제마다 학습이 진행되었습니다.
 >
-> 1. [UI 디자인](#ui-design)
-> 1. [UI 개발 (HTML + CSS + ECMAScript(JS))](#ui-개발-html-css-ecmascript-js)
+> 1. [UI 디자인](#ui-디자인)
+> 1. [UI 개발 (HTML + CSS + ECMAScript(JS))](#ui-개발-html--css--ecmascriptjs)
 
 <br/>
 
