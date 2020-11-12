@@ -7,7 +7,7 @@ import { FORM_CLASSES } from '../../constants/classNames';
  * @extends Input
  * @param {HTMLElmenet} domNode HTML 요소
  * @example
- * const emailInputNode = document.querySelector('.member-id')
+ * const emailInputNode = document.querySelector('.member__id')
  * const emailInputComponent = new EmailInput(emailInputNode).init({ placeholderText: '야무@이듬.run' })
  */
 class EmailInput extends Input {
@@ -77,7 +77,8 @@ class EmailInput extends Input {
     });
 
     on(inputNode, 'blur', () => {
-      hasClass(component, FORM_CLASSES.focus) || inputNode.removeAttribute('placeholder');
+      hasClass(component, FORM_CLASSES.focus) ||
+        inputNode.removeAttribute('placeholder');
     });
 
     on(inputNode, 'input', () => {
@@ -85,7 +86,8 @@ class EmailInput extends Input {
       this.checkEmailFormat();
       this.render();
       /* @debug */
-      this.options.debug && console.log(component, '컴포넌트 상태: ', this.state);
+      this.options.debug &&
+        console.log(component, '컴포넌트 상태: ', this.state);
     });
   }
 

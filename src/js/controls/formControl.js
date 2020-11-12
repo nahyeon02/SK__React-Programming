@@ -54,7 +54,7 @@ function updateFormValidState(type, isValid) {
  */
 function settingEmailInput() {
   // 문서에서 이메일 인풋 요소를 찾아 참조
-  const emailInputNode = el('.member-id');
+  const emailInputNode = el('.member__id');
 
   // 컴포넌트 → 이메일 인풋 인스턴스 생성
   // 플레이스홀더(placeholderText), 이벤트(on) 옵션 설정 가능
@@ -76,7 +76,7 @@ function settingEmailInput() {
  */
 function settingPasswordInput() {
   // 문서에서 패스워드 인풋 리스트를 찾아 참조
-  const passwordInputs = els('.member-password');
+  const passwordInputs = els('.member__password');
 
   // 패스워드 인풋
   const pass1 = passwordInputs[0];
@@ -129,9 +129,9 @@ function settingSaveEmailInput() {
  */
 function settingMemberFormSubmit() {
   // 문서에서 이메일 인풋 요소를 찾아 참조
-  memberForm = el('.member-form');
-  buttonLogin = el('button.button-login');
-  buttonSignup = el('button.button-signup');
+  memberForm = el('.member__form');
+  buttonLogin = el('button.buttonLogin');
+  buttonSignup = el('button.buttonSignup');
 
   // 회원가입 폼일 경우만
   if (buttonSignup) {
@@ -225,8 +225,10 @@ function checkAllInputsFilled(inputs) {
  * @function
  */
 function renderAllInputsFilled() {
-  const checkInputSelector = '.member-id input, .member-password input';
-  const isAllInputFilled = checkAllInputsFilled(Array.from(els(checkInputSelector)));
+  const checkInputSelector = '.member__id input, .member__password input';
+  const isAllInputFilled = checkAllInputsFilled(
+    Array.from(els(checkInputSelector))
+  );
 
   isAllInputFilled && formValidState.email
     ? changeSubmitButtonSubmitEnable()

@@ -15,8 +15,8 @@
 }
 
 /* 회원가입 비디오 배경 */
-/* .bg-video-container,
-.bg-video-container video {
+/* .bgVideo__container,
+.bgVideo__container video {
   position: fixed;
   left: 50%;
   bottom: 0;
@@ -26,13 +26,13 @@
   z-index: -1;
 }
 
-.bg-video-container {
+.bgVideo__container {
   background-image: url(../images/coffee-desktop.jpg);
   background-size: 100% 100%;
 } */
 
 /* 화면 가득 채우는 비디오 스타일 코드 ----------------------------------------------------- */
-.bg-video-container {
+.bgVideo__container {
   position: fixed;
   z-index: -1;
   width: 100vw;
@@ -42,7 +42,7 @@
   background: #222;
 }
 
-.bg-video-container::before {
+.bgVideo__container::before {
   content: '';
   position: absolute;
   top: 0;
@@ -56,7 +56,7 @@
   );
 }
 
-.bg-video-container video {
+.bgVideo__container video {
   width: 100%;
   height: 100%;
   /* IE 미지원 */
@@ -67,59 +67,59 @@
 /* 화면 가득 채우는 비디오 스타일 코드 END ----------------------------------------------------- */
 
 /* 로그인 제목 및 단락 디자인 */
-.member-headline,
-.member-text {
+.member__headline,
+.member__text {
   line-height: 1.5;
   text-align: center;
   margin: 0;
 }
 
-.member-headline {
+.member__headline {
   font-size: 3.6rem;
   font-weight: 100;
   margin-top: 50px;
   margin-bottom: 24px;
 }
 
-.member-text[lang='en'] {
+.member__text[lang='en'] {
   font-size: 1.8rem;
 }
 
-.member-text {
+.member__text {
   font-size: 1.2rem;
 }
 
 /* 로그인 폼 */
-.member-form {
+.member__form {
   margin-top: 114px;
   margin-bottom: 30px;
 }
 
-.member-form fieldset {
+.member__form fieldset {
   /* margin: 0 12px; */
 }
 
 /* 이메일 주소와 패스워드 입력 서식 */
-.member-id,
-.member-password {
+.member__id,
+.member__password {
   position: relative;
   height: 48px;
   transition: all 300ms;
 }
-.member-id.is--invalid,
-.member-password.is--invalid {
+.member__id.is--invalid,
+.member__password.is--invalid {
   height: 70px;
 }
-.member-id,
-.member-password {
+.member__id,
+.member__password {
   margin-bottom: 30px;
 }
 
-.login .member-password {
+.login .member__password {
   margin-bottom: 15px;
 }
 
-.member-form input {
+.member__form input {
   width: 100%;
   /* height: 40px; */
   padding: 1.5em 0.5em 0.5em;
@@ -134,23 +134,23 @@
   border-bottom-width: 2px;
 }
 
-.member-form input::-webkit-input-placeholder,
-.member-form input::placeholder {
+.member__form input::-webkit-input-placeholder,
+.member__form input::placeholder {
   opacity: 1; /* firefox 문제 해결을 위한 코드 */
   color: #c5c1bf;
 }
 
 /* 이메일 주소 및 패스워드의 값이 유효하지 않을 때 (invalid 상태) 부모 컨테이너에 is--invalid 클래스를 추가하여 오류 메시지를 보이거나 숨기도록 처리  */
 /* 입력 서식에 invalid 상태 임을 알 수 있는 아이콘을 배경이미지로 처리 */
-.member-id--error,
-.member-password--error {
+.member__id--error,
+.member__password--error {
   display: none;
   font-size: 1.2rem;
   padding: 3px 0 3px 8px;
 }
 
-.is--invalid .member-id--error,
-.is--invalid .member-password--error {
+.is--invalid .member__id--error,
+.is--invalid .member__password--error {
   display: block;
 }
 
@@ -165,19 +165,19 @@
   height: 16px;
   background-repeat: no-repeat;
 }
-.is--valid.member-id::after,
-.is--valid.member-password::after {
+.is--valid.member__id::after,
+.is--valid.member__password::after {
   background-image: url(../images/icon-checked.svg);
 }
-.is--invalid.member-id::after,
-.is--invalid.member-password::after {
+.is--invalid.member__id::after,
+.is--invalid.member__password::after {
   background-image: url(../images/icon-warning.svg);
 }
 
 /* 이메일 주소 및 패스워드의 입력 서식에 포커스 시(focus 상태) 부모 컨테이너에 is--focus 클래스를 추가하여 레이블의 위치가 상단으로 배치되도록 처리  */
 /* foucs 상태 시 자바스크립트를 사용하여 input 요소에 placeholder 속성을 동적으로 추가하는 것이 필요함  */
-.member-id label,
-.member-password label {
+.member__id label,
+.member__password label {
   position: absolute;
   top: 18px;
   left: 8px;
@@ -192,9 +192,9 @@
 }
 
 /* 패스워드 입력 시 입력 값을 보거나 감추고자 할 때 버튼을 클릭하면 패스워드의 부모 컨테이너에 is--visible 클래스를 추가하여 버튼의 배경이미지가 바뀌도록 처리 */
-/* .button-password를 클릭할 때 부모 요소 컨테이너에 .is-valid 클래스가 toggle 되도록 설정이 필요함 */
+/* .buttonPassword를 클릭할 때 부모 요소 컨테이너에 .is-valid 클래스가 toggle 되도록 설정이 필요함 */
 /* 이때 is-visible 클래스가 부모 컨테이너에 추가되면 내부의 패스워드 입력 서식인 input 요소의 type 속성 값을 text로 변경되도록 자바스크립트 처리가 필요 함 */
-.button-password {
+.buttonPassword {
   display: none;
   position: absolute;
   z-index: 10;
@@ -206,22 +206,22 @@
   background-color: transparent;
 }
 
-.is--focus .button-password,
-.is--invalid .button-password,
-.is--valid .button-password {
+.is--focus .buttonPassword,
+.is--invalid .buttonPassword,
+.is--valid .buttonPassword {
   display: block;
 }
 
-.is--focus .button-password {
+.is--focus .buttonPassword {
   right: 4px;
 }
 
-.is--invalid .button-password,
-.is--valid .button-password {
+.is--invalid .buttonPassword,
+.is--valid .buttonPassword {
   right: 28px;
 }
 
-.button-password .ir {
+.buttonPassword .ir {
   display: inline-block;
   /* padding: 4px; */
   width: inherit;
@@ -229,7 +229,7 @@
   background: url(../images/icon-visible.svg) no-repeat 50% 50%;
 }
 
-.is--visible .button-password .ir {
+.is--visible .buttonPassword .ir {
   background-image: url(../images/icon-invisible.svg);
 }
 
@@ -287,8 +287,8 @@
   margin-top: 70px;
 }
 
-.button-fill,
-.button-stroke {
+.button--fill,
+.button--stroke {
   position: relative;
   display: block;
   width: 100%;
@@ -302,8 +302,8 @@
 }
 
 /* 로그인 및 회원가입 버튼의 기본 값 및 배경 이미지 지정 */
-.button-fill::after,
-.button-stroke::after {
+.button--fill::after,
+.button--stroke::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -315,36 +315,36 @@
   background-position: 50% 50%;
 }
 
-.button-fill::after {
+.button--fill::after {
   background-image: url(../images/icon-arrow-darkblue.svg);
 }
 
-.button-fill {
+.button--fill {
   color: #24388d;
   background-color: #fefefe;
   margin-bottom: 15px;
   border: 0;
 }
 
-.button-stroke {
+.button--stroke {
   opacity: 0.7;
   border: 1px solid #fefefe;
   color: #f5f5f5;
   background-color: transparent;
 }
-.button-stroke:hover,
-.button-stroke:focus {
+.button--stroke:hover,
+.button--stroke:focus {
   opacity: 1;
 }
-.button-stroke::after {
+.button--stroke::after {
   background-image: url(../images/icon-arrow-white.svg);
 }
 
-/* 로딩 중 .button-login의 배경 이미지 변경 */
-.is--loading .button-fill {
+/* 로딩 중 .buttonLogin의 배경 이미지 변경 */
+.is--loading .button--fill {
   cursor: not-allowed;
 }
-.is--loading .button-fill::after {
+.is--loading .button--fill::after {
   background-image: url(../images/icon-arrow-loading.svg);
   transform-origin: center;
   animation: spinner 0.2s linear infinite;
@@ -356,11 +356,11 @@
   }
 }
 
-/* disabled 상태일 때 .button-login의 배경 이미지 변경 */
-.is--disabled .button-fill {
+/* disabled 상태일 때 .buttonLogin의 배경 이미지 변경 */
+.is--disabled .button--fill {
   color: #d2c9b6;
 }
-.is--disabled .button-fill::after {
+.is--disabled .button--fill::after {
   background-image: url(../images/icon-arrow-disabled.svg);
 }
 
@@ -371,7 +371,7 @@
     background: url(../images/coffee-desktop.jpg) 50% 0;
   }
   /* 데스크탑 로그인 폼 크기 재설정 */
-  .member-form {
+  .member__form {
     width: 540px;
     margin-left: auto;
     margin-right: auto;
@@ -383,11 +383,11 @@
     flex-flow: row nowrap;
     justify-content: space-between;
   }
-  .button-fill,
-  .button-stroke {
+  .button--fill,
+  .button--stroke {
     width: 260px;
   }
-  .button-fill {
+  .button--fill {
     margin-right: 20px;
   }
 }

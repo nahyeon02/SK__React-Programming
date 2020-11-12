@@ -1,13 +1,13 @@
 /* --------------------------------------------
   * 이디야 뉴스 관련 콘텐츠 디자인 */
 /* 이디야 뉴스 탭 메뉴 (ul 요소) */
-.news-tab {
+.news__tab {
   display: flex;
   flex-flow: row wrap;
 }
 
 /* 이디야 뉴스 탭 목록 (li 요소) */
-.news-tab [role="none"] {
+.news__tab [role="none"] {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 /* 이디야 뉴스 탭 항목 (a 요소) */
-.news-tab [role="tab"] {
+.news__tab [role="tab"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,12 +33,12 @@
   color: #24388d;
 }
 
-.news-tab [role="tab"]:focus {
+.news__tab [role="tab"]:focus {
   position: relative;
   z-index: 10;
 }
 
-.news-tab [aria-selected="true"] {
+.news__tab [aria-selected="true"] {
   background: #24388d;
   color: #fefefe;
 }
@@ -59,13 +59,13 @@
 }
 
 /* 뉴스 섹션 제목 공통 (h2 요소) */
-.news-headline {
+.news__headline {
   font-size: 2rem;
   font-weight: 700;
   color: #24388d;
 }
 
-.news-headline::before {
+.news__headline::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -75,7 +75,7 @@
 }
 
 /* 뉴스 섹센 텍스트 공통 (p 요소) */
-.news-text {
+.news__text {
   margin: 10px 0;
   font-size: 1.4rem;
 }
@@ -121,7 +121,7 @@
 
 /* 검색 버튼 - 배경이미지로 처리하는 방식 */
 /* news.html 및 store.html에 사용 */
-.button-search {
+.buttonSearch {
   position: absolute;
   right: 0;
   bottom: 5px;
@@ -132,7 +132,7 @@
   background: transparent;
 }
 
-.button-search .icon-search {
+.buttonSearch .iconSearch {
   position: absolute;
   top: 0;
   right: 0;
@@ -301,41 +301,41 @@
 
 /* 수상 내역 섹션 (section.news__award 요소)*/
 /* 수상 내역에 배경을 지정하기 위한 컨테이너 (div 요소) */
-.award-container {
+.news__awardContainer {
   margin: 25px -20px -20px;
   background: #f5f5f5;
 }
 
-/* 연도별 수상 내역 섹션 (section.news__award__year 요소) */
-.news__award__year {
+/* 연도별 수상 내역 섹션 (section.news__awardYear 요소) */
+.news__awardYear {
   display: flex;
   flex-flow: row nowrap;
   padding: 0 20px;
 }
 
-.news__award__year:first-child {
+.news__awardYear:first-child {
   padding-top: 25px;
 }
 
-.news__award__year:last-child {
+.news__awardYear:last-child {
   padding-bottom: 50px;
 }
 
 /* .news_award__year내 연도 (h3 요소) */
-.award-headline {
+.news__awardHeadline {
   margin: 0 25px 0 0;
   font-weight: 700;
   color: #24388d;
 }
 
 /* .news_award__year내 수상내역 목록 (ul 요소) */
-.award-list {
+.news__awardList {
   position: relative;
   border-left: 1px solid #c8cde2;
   flex-grow: 1;
 }
 
-.award-list::before {
+.news__awardList::before {
   content: "";
   position: absolute;
   top: -5px;
@@ -348,13 +348,13 @@
 }
 
 /* .news_award__year내 수상내역 목록 항목 (li 요소) */
-.award-item {
+.news__awardItem {
   margin-bottom: 20px;
 }
 
 /* 수상내역의 경우 details, summary 요소를 사용하여 마크업 */
 /* .news_award__year내 수상내역 (summary 요소) */
-.award-subject {
+.news__awardSubject {
   position: relative;
   width: 100%;
   padding: 5px;
@@ -365,17 +365,17 @@
 }
 
 /* summary 요소의 기본 불릿을 제거하가 위한 선언 */
-.eaward-subject::marker {
+.enews__awardSubject::marker {
   display: none;
 }
 
-.award-subject::-webkit-details-marker {
+.news__awardSubject::-webkit-details-marker {
   display: none;
   color: transparent;
 }
 
 /* summary 요소의 기본 배경 이미지 (펼칠 수 있음을 나타내는 배경이미지) */
-.award-subject::after {
+.news__awardSubject::after {
   content: "";
   position: absolute;
   top: 0;
@@ -386,29 +386,29 @@
 }
 
 /* details 요소의 속성 값이 open일 경우 summary 요소의 배경이미지(접을 수 있음을 나타내는 배경이미지) 변경 */
-details[open] .award-subject::after {
+details[open] .news__awardSubject::after {
   background-image: url(../images/icon-arrow-up.svg);
 }
 
 /* summary 내 수상 "월"을 위한 마크업 (b 요소) */
-.award-subject b {
+.news__awardSubject b {
   margin-right: 10px;
   font-size: 12px;
   font-weight: 400;
 }
 
 /* 수상내역 썸네일 이미지 (figure 요소) */
-.award-thumbnail {
+.news__awardThumbnail {
   margin-left: 25px;
   font-size: 12px;
   font-weight: 400;
 }
-.award-thumbnail figcaption {
+.news__awardThumbnail figcaption {
   margin-top: 10px;
 }
 
 /* 수상내역 텍스트 (p 요소 - 내부에 span 요소와 time 요소가 포함 됨) */
-.award-item p {
+.news__awardItem p {
   margin-top: 10px;
   margin-left: 25px;
   font-size: 12px;
@@ -416,7 +416,7 @@ details[open] .award-subject::after {
 }
 
 /* 수상날짜 (time 요소) */
-.award-date {
+.news__awardDate {
   font-size: 11px;
   font-weight: 700;
   color: #5b6aa9;
@@ -425,7 +425,7 @@ details[open] .award-subject::after {
 /* Mobile UI 적용을 위한 Breakpoint */
 @media all and (max-width: 767px) {
   /* 모바일 이디야 뉴스 관련 콘텐츠 디자인 */
-  .news-tab [role="none"] {
+  .news__tab [role="none"] {
     width: 50%;
     height: 48px;
   }
@@ -434,12 +434,12 @@ details[open] .award-subject::after {
 /* Desktop UI 적용을 위한 Breakpoint */
 @media all and (min-width: 768px) {
   /* 데스크탑 이디야 뉴스 관련 콘텐츠 디자인 */
-  .news-tab {
+  .news__tab {
     justify-content: center;
     margin-top: 70px;
   }
 
-  .news-tab [role="tab"] {
+  .news__tab [role="tab"] {
     width: initial;
     height: initial;
     padding: 0.83333em 2.4em;
@@ -468,15 +468,15 @@ details[open] .award-subject::after {
   }
 
   /* 데스크탑 수상 내역 */
-  .news__award .news-headline,
-  .news__award .news-text,
-  .news__award__year {
+  .news__award .news__headline,
+  .news__award .news__text,
+  .news__awardYear {
     width: 740px;
     margin-right: auto;
     margin-left: auto;
   }
 
-  .news__award__year:last-child {
+  .news__awardYear:last-child {
     padding-bottom: 80px;
   }
 }

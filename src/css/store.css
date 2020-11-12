@@ -1,9 +1,9 @@
 /* 스토어 main.store (main 요소) */
-.store {
+.store .appMain {
   padding: 20px 18px;
 }
 /* 매장 검색 폼 (label 및 input, button 요소를 그룹으로 묶은 컨테이너) */
-.store-form-container {
+.store__form-container {
   display: flex;
   flex-flow: row wrap;
   position: relative;
@@ -45,16 +45,16 @@
   display: block;
 }
 /*  */
-.store__search .button-search {
+.store__search .buttonSearch {
   top: 48px;
   right: 15px;
 }
 /* 스토어 검색 결과 목록 */
-.store-list {
+.store__list {
   margin-top: 3px;
 }
 /* 스토어 매장 검색 리스트 내 a[role="button"] */
-.store-list [role="button"] {
+.store__list [role="button"] {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -62,27 +62,27 @@
   background: #fefefe;
   border: 3px solid #f5f5f5;
 }
-/* .store-list 내 첫번째 li 요소의 a[role="button"] */
-.store-list li:first-child [role="button"] {
+/* .store__list 내 첫번째 li 요소의 a[role="button"] */
+.store__list li:first-child [role="button"] {
   border-bottom: 0;
 }
 /* 스터어 매장 썸네일 (figure 요소) */
-.store-thumbnail {
+.store__thumbnail {
   margin: 0 10px 0 0;
   width: 45px;
   height: 45px;
 }
 /* 매장이름/주소 콘텐츠 영역 */
-.store-list dl {
+.store__list dl {
   flex-grow: 1;
   margin: 0;
   color: #24388d;
 }
-.store-list dt {
+.store__list dt {
   font-size: 15;
   font-weight: 700;
 }
-.store-list dd {
+.store__list dd {
   margin-left: 0;
   font-size: 13px;
   line-height: 18px;
@@ -113,7 +113,7 @@
 /* Desktop UI 적용을 위한 Breakpoint */
 @media all and (min-width: 768px) {
   /* 데스크탑 스토어 메인 (main 요소) */
-  .store {
+  .store .appMain {
     padding: 30px;
   }
   /* 데스크탑 매장 검색 섹션 */

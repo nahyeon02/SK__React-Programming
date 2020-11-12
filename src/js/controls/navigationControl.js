@@ -14,7 +14,7 @@ let openButtonNode = null;
 function init() {
   // 문서 객체 참조
   appNavigationNode = el('.appNavigation');
-  openButtonNode = el('.button.appNavigation__button--open');
+  openButtonNode = el('.button.openAppNavigation');
 
   // 비동기 통신 요청
   fetchData(

@@ -13,7 +13,7 @@ const templateSearchForm = /* html */ `
         <div class="keyword-container">
           <input type="search" name="newsKeyword" id="newsKeyword" class="keyword" placeholder="{placeholder}" aria-required="true" aria-label="{inputLabel}" />
         </div>
-        <button type="submit" class="button-search" aria-label="{buttonLabel}"><span class="icon-search"></span></button>
+        <button type="submit" class="buttonSearch" aria-label="{buttonLabel}"><span class="iconSearch" /></button>
       </div>
     </fieldset>
   </form>
@@ -45,7 +45,7 @@ class SearchForm extends Component {
     selectLabel: '검색 범위 선택',
     inputLabel: '검색어',
     buttonLabel: '검색',
-    selectOptions: [ { value: 'title', text: '제목' } ],
+    selectOptions: [{ value: 'title', text: '제목' }],
     placeholder: '검색어 입력(예: 이디야)',
   };
 
@@ -61,7 +61,13 @@ class SearchForm extends Component {
   /* 인스턴스 멤버(공개) -------------------------------------------------------------- */
 
   render() {
-    const { legend, selectLabel, inputLabel, buttonLabel, placeholder } = this.options;
+    const {
+      legend,
+      selectLabel,
+      inputLabel,
+      buttonLabel,
+      placeholder,
+    } = this.options;
 
     // 캐싱
     if (!this.isRendered) {

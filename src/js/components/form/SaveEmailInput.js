@@ -6,7 +6,7 @@ import Input from './Input';
  * @extends Input
  * @param {HTMLElmenet} domNode HTML 요소
  * @example
- * var saveEmailInputNode = document.querySelector('.member-form .save-email')
+ * var saveEmailInputNode = document.querySelector('.member__form .save-email')
  * var saveEmailInputComponent = new SaveEmailInput(saveEmailInputNode).init()
  */
 class SaveEmailInput extends Input {

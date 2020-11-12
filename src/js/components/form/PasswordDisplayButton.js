@@ -6,7 +6,7 @@ import Input from './Input';
  * @extends Input
  * @param {HTMLElmenet} domNode HTML 요소
  * @example
- * const passwordDisplayNode = document.querySelector('.member-password .button-password')
+ * const passwordDisplayNode = document.querySelector('.member__password .buttonPassword')
  * const passwordDisplayButtonComponent = new PasswordDisplayButton(passwordDisplayNode).init()
  */
 class PasswordDisplayButton extends Input {
@@ -64,8 +64,7 @@ class PasswordDisplayButton extends Input {
         visible: this.state.visible,
         current: 'click',
       });
-    }
-    else {
+    } else {
       // 상태 변경
       this.setState({
         visible: !this.state.visible,

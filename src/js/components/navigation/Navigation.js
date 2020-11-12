@@ -51,10 +51,7 @@ class Navigation extends Component {
     const { getNode, on } = Navigation;
 
     this.openButton = this.options.openButton;
-    this.closeButton = getNode(
-      '.button.appNavigation__button--close',
-      this.component
-    );
+    this.closeButton = getNode('.button.closeAppNavigation', this.component);
 
     on(this.openButton, 'click', this.open.bind(this));
     on(this.closeButton, 'click', this.close.bind(this));

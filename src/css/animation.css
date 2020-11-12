@@ -18,25 +18,25 @@ button[title="메뉴 열기"] {
   animation: transform-none 0.45s 0.65s cubic-bezier(0, 0, 0, 1) forwards;
 }
 
-.ediya-menu__item {
+.ediyaMenu__item {
   opacity: 0;
   transform: translateY(4rem);
   animation: transform-none 0.3s 0.85s cubic-bezier(0.6, 0.01, 0.16, 1) forwards;
 }
 
-.ediya-menu__item:nth-child(1) {
+.ediyaMenu__item:nth-child(1) {
   animation-duration: 0.8s;
 }
 
-.ediya-menu__item:nth-child(2) {
+.ediyaMenu__item:nth-child(2) {
   animation-duration: 1.2s;
 }
 
-.ediya-menu__item:nth-child(3) {
+.ediyaMenu__item:nth-child(3) {
   animation-duration: 1.6s;
 }
 
-.ediya-menu__item:nth-child(4) {
+.ediyaMenu__item:nth-child(4) {
   animation-duration: 2.0s;
 }
 

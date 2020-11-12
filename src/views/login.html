@@ -57,7 +57,7 @@
           padding: var(--vh) var(--vw);
         }
 
-        .member-headline {
+        .member__headline {
           /* 50px을 디자인 시안 높이(812px)에 맞춰 VH 단위로 환산 → 50/815*100 * 1vh */
           --mt: calc(50/var(--viewport-height-value)*100vh);
           margin-top: var(--mt);
@@ -66,7 +66,7 @@
           margin-bottom: var(--mb);
         }
 
-        .member-form {
+        .member__form {
           /* 114px을 디자인 시안 높이(812px)에 맞춰 VH 단위로 환산 → 114/815*100 * 1vh */
           --mt: calc(114/var(--viewport-height-value)*100vh);
           margin-top: var(--mt);
@@ -75,20 +75,20 @@
           margin-bottom: var(--mb);
         }
 
-        .member-form fieldset {
+        .member__form fieldset {
           /* 12px을 디자인 시안 너비(375px) 맞춰 VW 단위로 환산 → 12/375*100 * 1vw */
           --mtb: calc(12/var(--viewport-width-value)*100vw);
           margin-left: var(--mtb);
           margin-right: var(--mtb);
         }
 
-        .member-id {
+        .member__id {
           /* 30px을 디자인 시안 높이(812px)에 맞춰 VH 단위로 환산 → 30/815*100 * 1vh */
           --mb: calc(30/var(--viewport-height-value)*100vh);
           margin-bottom: var(--mb);
         }
 
-        .member-password {
+        .member__password {
           /* 15px을 디자인 시안 높이(812px)에 맞춰 VH 단위로 환산 → 15/815*100 * 1vh */
           --mb: calc(15/var(--viewport-height-value)*100vh);
           margin-bottom: var(--mb);
@@ -100,25 +100,25 @@
           margin-top: var(--mt);
         }
 
-        .button-fill {
+        .button--fill {
           /* 15px을 디자인 시안 높이(812px)에 맞춰 VH 단위로 환산 → 15/815*100 * 1vh */
           --mb: calc(15/var(--viewport-height-value)*100vh);
           margin-bottom: var(--mb);
         }
 
-        .member-id,
-        .member-password {
+        .member__id,
+        .member__password {
           height: initial;
         }
 
-        .member-form input {
+        .member__form input {
           padding: 1.313em 0.5em 0.5em;
         }
       }
 
       /* 뷰포트 너비: 768+  */
       @media (min-width: 768px) {
-        .member-form fieldset {
+        .member__form fieldset {
           margin: 0 12px;
         }
 
@@ -134,7 +134,7 @@
 
       /* 뷰포트 회전 방향이 수직이고, 뷰포트 높이: 0~780 */
       @media (max-height: 780px) and (orientation: portrait) {
-        .member-form {
+        .member__form {
           margin-top: 11vh;
         }
 
@@ -145,106 +145,111 @@
     </style>
   </head>
 
-  <body class="membership">
-    <div class="appHeader__container">
-      <header class="appHeader">
-        <h1 class="appHeader__brand">
-          <a href="../index.html"><img src="../images/brand.svg" alt="Ediya Coffee" class="response" /></a>
-        </h1>
-        <button type="button" class="button appNavigation__button--open" aria-label="메뉴 열기" title="메뉴 열기">
-          <span class="ir"></span>
-        </button>
-        <nav class="appNavigation">
-          <h2 class="a11yHidden">메인 메뉴</h2>
-          <ul class="resetList">
-            <!-- 비동기 데이터 바인딩 → 내비게이션 리스트 렌더링 -->
-          </ul>
-          <script type="text/template" id="template__navigationList">
-            <li data-id="{item.id}"><a href="{item.link}">{item.text}</a></li>
-          </script>
-          <button type="button" class="button appNavigation__button--close" title="메뉴 닫기" aria-label="메뉴 닫기">
-            <span class="close" aria-hidden="true">×</span>
-          </button>
-        </nav>
-      </header>
-    </div>
-    <main class="appMain">
-      <section class="member login">
-        <h2 class="member-headline">로그인</h2>
-        <p class="member-text" lang="en">Welcome, Ediya Coffee</p>
-        <p class="member-text">이디야커피에 오신 것을 환영합니다.</p>
-        <form action="#" method="POST" class="member-form">
-          <fieldset>
-            <legend>회원가입 폼</legend>
-            <div class="member-id">
-              <label for="userEmail">이메일</label>
-              <input
-                type="email"
-                id="userEmail"
-                name="userEmail"
-                aria-required="true"
-                aria-invalid="false"
-                aria-describedby="emailErrorFeedback" />
-              <span
-                role="alert"
-                id="emailErrorFeedback"
-                class="member-id--error">이메일 입력 방법이 잘못되었습니다. (예: user@domain.io)</span>
-            </div>
-            <div class="member-password">
-              <label for="userPassword">패스워드</label>
-              <input
-                type="password"
-                id="userPassword"
-                name="userPassword"
-                aria-required="true"
-                aria-invalid="false"
-                aria-describedby="passwordErrorFeedback" />
-              <span
-                role="alert"
-                id="passwordErrorFeedback"
-                class="member-password--error">패스워드는 숫자, 영어 조합 6자 이상 입력해야 합니다.</span>
-              <button type="button" class="button-password" aria-label="패스워드 보기"><span class="ir"></span></button>
-            </div>
-            <div class="save-email">
-              <input type="checkbox" id="userEmailSave" />
-              <span class="checkbox"></span>
-              <label for="userEmailSave">이메일 저장</label>
-            </div>
-            <div class="buttonContainer is--disabled">
-              <button type="submit" class="button-login button-fill" disabled="disabled">로그인</button>
-              <a href="./signup.html" class="link-signup button-stroke">회원가입</a>
-            </div>
-          </fieldset>
-        </form>
-      </section>
-    </main>
-    <footer class="appFooter">
-      <div class="appFooter__container">
-        <div class="appFooter__brand">
-          <img src="../images/brand-dark.svg" alt="EDIYA COFFEE" />
-        </div>
-        <ul class="appFooter__guideList resetList">
-          <li><a href="#">개인정보처리방침</a></li>
-          <li><a href="#">멤버스 이용약관</a></li>
-          <li><a href="#">가맹 안내</a></li>
-          <li><a href="#">대량쿠폰구매</a></li>
-          <li><a href="#">채용안내</a></li>
-          <li><a href="#">고객의 소리</a></li>
-          <li><a href="#">사이트맵</a></li>
-          <li><a href="#">점주의 방</a></li>
-        </ul>
-        <address class="address">
-          <span>서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17)</span>
-          <span><b>TEL : </b>02-543-6467</span>
-          <span><b>FAX : </b>02-543-7191</span>
-          <span><b>사업자등록번호 : </b>107-86-16302</span>
-          <span><b>통신판매업 신고 : </b>강남 제 002519호</span>
-          <span><b>대표이사 : </b>문창기</span>
-        </address>
-        <small class=".appFooter__copyright">&copy; 2017 EDIYA COFFEE COMPANY. ALL RIGHTS RESERVED..</small>
-      </div>
-    </footer>
+  <body>
 
+    <div class="app membership">
+      <div class="appHeader__container">
+        <header class="appHeader">
+          <h1 class="appHeader__brand">
+            <a href="../index.html"><img src="../images/brand.svg" alt="Ediya Coffee" class="response" /></a>
+          </h1>
+          <button type="button" class="button openAppNavigation" aria-label="메뉴 열기" title="메뉴 열기">
+            <span class="ir" />
+          </button>
+          <nav class="appNavigation">
+            <h2 class="a11yHidden">메인 메뉴</h2>
+            <ul class="resetList">
+              <!-- 비동기 데이터 바인딩 → 내비게이션 리스트 렌더링 -->
+            </ul>
+            <script type="text/template" id="template__navigationList">
+                  <li data-id="{item.id}"><a href="{item.link}">{item.text}</a></li>
+                </script>
+            <button type="button" class="button closeAppNavigation" title="메뉴 닫기" aria-label="메뉴 닫기">
+              <span class="close" aria-hidden="true">×</span>
+            </button>
+          </nav>
+        </header>
+      </div>
+      
+      <main class="appMain">
+        <section class="member login">
+          <h2 class="member__headline">로그인</h2>
+          <p class="member__text" lang="en">Welcome, Ediya Coffee</p>
+          <p class="member__text">이디야커피에 오신 것을 환영합니다.</p>
+          <form action="#" method="POST" class="member__form">
+            <fieldset>
+              <legend>회원가입 폼</legend>
+              <div class="member__id">
+                <label for="userEmail">이메일</label>
+                <input
+                  type="email"
+                  id="userEmail"
+                  name="userEmail"
+                  aria-required="true"
+                  aria-invalid="false"
+                  aria-describedby="emailErrorFeedback" />
+                <span
+                  role="alert"
+                  id="emailErrorFeedback"
+                  class="member__id--error">이메일 입력 방법이 잘못되었습니다. (예: user@domain.io)</span>
+              </div>
+              <div class="member__password">
+                <label for="userPassword">패스워드</label>
+                <input
+                  type="password"
+                  id="userPassword"
+                  name="userPassword"
+                  aria-required="true"
+                  aria-invalid="false"
+                  aria-describedby="passwordErrorFeedback" />
+                <span
+                  role="alert"
+                  id="passwordErrorFeedback"
+                  class="member__password--error">패스워드는 숫자, 영어 조합 6자 이상 입력해야 합니다.</span>
+                <button type="button" class="button buttonPassword" aria-label="패스워드 보기"><span class="ir" /></button>
+              </div>
+              <div class="save-email">
+                <input type="checkbox" id="userEmailSave" />
+                <span class="checkbox"></span>
+                <label for="userEmailSave">이메일 저장</label>
+              </div>
+              <div class="buttonContainer is--disabled">
+                <button type="submit" class="buttonLogin button--fill" disabled="disabled">로그인</button>
+                <a href="./signup.html" class="link-signup button--stroke">회원가입</a>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+      </main>
+      
+      <footer class="appFooter">
+        <div class="appFooter__container">
+          <div class="appFooter__brand">
+            <img src="../images/brand-dark.svg" alt="EDIYA COFFEE" />
+          </div>
+          <ul class="appFooter__guideList resetList">
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">멤버스 이용약관</a></li>
+            <li><a href="#">가맹 안내</a></li>
+            <li><a href="#">대량쿠폰구매</a></li>
+            <li><a href="#">채용안내</a></li>
+            <li><a href="#">고객의 소리</a></li>
+            <li><a href="#">사이트맵</a></li>
+            <li><a href="#">점주의 방</a></li>
+          </ul>
+          <address class="appFooter__address">
+            <span>서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17)</span>
+            <span><b>TEL : </b>02-543-6467</span>
+            <span><b>FAX : </b>02-543-7191</span>
+            <span><b>사업자등록번호 : </b>107-86-16302</span>
+            <span><b>통신판매업 신고 : </b>강남 제 002519호</span>
+            <span><b>대표이사 : </b>문창기</span>
+          </address>
+          <small class="appFooter__copyright">&copy; 2017 EDIYA COFFEE COMPANY. ALL RIGHTS RESERVED..</small>
+        </div>
+      </footer>
+    </div>
+    
   </body>
 
 </html>

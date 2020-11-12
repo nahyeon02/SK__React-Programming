@@ -13,7 +13,7 @@ let ediyaMenuList = null;
 // 초기화 함수
 function init() {
   // 문서 객체 참조
-  ediyaMenuList = el('.ediya-menu');
+  ediyaMenuList = el('.ediyaMenu');
 
   // 비동기 통신 요청
   fetchData(
@@ -33,7 +33,7 @@ function render(beverages) {
     /* 옵션 설정 */
     {
       list: beverages,
-      templateId: '#template-ediya-menu__item',
+      templateId: '#template__EdiyaMenuItem',
     }
   );
 }

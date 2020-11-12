@@ -20,9 +20,11 @@ let newsContents = [];
  */
 function init() {
   // 뉴스 탭 메뉴 찾기
-  newsTabMenu = document.querySelector('.news-tab');
+  newsTabMenu = document.querySelector('.news__tab');
   // 뉴스 콘텐츠 수집(배열화)
-  newsContents = Array.from(document.querySelectorAll('.news [role="tabpanel"]'));
+  newsContents = Array.from(
+    document.querySelectorAll('.news [role="tabpanel"]')
+  );
 
   // 이벤트 연결
   bindEvents();
@@ -44,7 +46,7 @@ function bindEvents() {
  * 탭 클릭 이벤트 핸들러
  * @function
  * @param {EventObject} e 이벤트 객체
-   */
+ */
 function handleTabClick(e) {
   // 현재 이벤트 대상
   const { target } = e;
@@ -59,7 +61,7 @@ function handleTabClick(e) {
  * 탭 렌더링
  * @function
  * @param {HTMLAnchorElement} target <a role="tab"> 요소
-   */
+ */
 function renderTab(target) {
   // 이전에 활성화 된 탭 참조
   const activatedTab = newsTabMenu.querySelector('[aria-selected="true"]');
@@ -98,7 +100,7 @@ function handleAnalysisHash() {
  * 화면에 문서 객체 UI 렌더링
  * @function
  * @param {String} visibleSelector 화면에 표시할 문서 객체를 가리키는 CSS 선택자
-   */
+ */
 function render(visibleSelector) {
   // 이전에 표시된 문서 객체를 찾아 참조
   const actibatedContent = findNewsContent(newsContents, activeClass);
@@ -118,10 +120,12 @@ function render(visibleSelector) {
  * 활성 클래스 이름을 가진 뉴스 콘텐츠 찾기
  * @function
  * @param {Array} contents 뉴스 콘텐츠 집합
-   * @param {String} activeClassName 활성 클래스 이름
-   */
+ * @param {String} activeClassName 활성 클래스 이름
+ */
 function findNewsContent(contents, activeClassName) {
-  return contents.find((content) => content.classList.contains(activeClassName));
+  return contents.find((content) =>
+    content.classList.contains(activeClassName)
+  );
 }
 
 // DOM 콘텐츠가 준비되면 init() 실행

@@ -36,7 +36,9 @@ class CardItem extends Component {
 
   _bindEvents() {
     const { getNode, on } = CardItem;
-    const { item: { id } } = this;
+    const {
+      item: { id },
+    } = this;
 
     this.itemNode = getNode(`[data-id="${id}"]`);
 
@@ -45,7 +47,7 @@ class CardItem extends Component {
     on(this.button, 'click', this.handleOpen.bind(this));
 
     this.dialog = getNode('[role="dialog"]', this.itemNode);
-    this.closeButton = getNode('.is-close-panel', this.dialog);
+    this.closeButton = getNode('.closeDialog', this.dialog);
     on(this.closeButton, 'click', this.handleClose.bind(this));
   }
 
@@ -68,7 +70,9 @@ class CardItem extends Component {
     const startIndex = this.template.indexOf('{{for}}');
     const endIndex = this.template.indexOf('{{/for}}');
 
-    const criteriaTemplate = this.template.slice(startIndex + 7, endIndex).replace(/\s/g, '');
+    const criteriaTemplate = this.template
+      .slice(startIndex + 7, endIndex)
+      .replace(/\s/g, '');
 
     const criteriaCode = criteria.reduce((template, item) => {
       template += criteriaTemplate

@@ -8,7 +8,7 @@ import PasswordDisplayButton from './PasswordDisplayButton';
  * @extends Input
  * @param {HTMLElmenet} domNode HTML 요소
  * @example
- * var passwordInputNode = document.querySelector('.member-password')
+ * var passwordInputNode = document.querySelector('.member__password')
  * var passwordInputComponent = new PasswordInput(passwordInputNode).init()
  */
 class PasswordInput extends Input {
@@ -72,8 +72,7 @@ class PasswordInput extends Input {
             inputNode.type = 'text';
             addClass(component, FORM_CLASSES.visible);
             this.updateLabel('패스워드 감추기');
-          }
-          else {
+          } else {
             inputNode.type = 'password';
             removeClass(component, FORM_CLASSES.visible);
             this.updateLabel('패스워드 보기');
@@ -122,7 +121,10 @@ class PasswordInput extends Input {
   }
 
   checkPasswordMatch() {
-    const { inputNode, options: { compareInput } } = this;
+    const {
+      inputNode,
+      options: { compareInput },
+    } = this;
 
     inputNode.value === compareInput.value
       ? this.setState({ current: 'valid', valid: true })
