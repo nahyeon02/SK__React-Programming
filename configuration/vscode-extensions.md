@@ -160,6 +160,7 @@ $ npm run vsce:i
 ## 문법 검사 / 코드 하이라이팅
 
 HTML, CSS, Sass, JavaScript(ES6), JSX, Styled Components 문법 검사, 포맷터, 하이라이팅, 포멧 변경, 정렬 등에 유용한 확장입니다.
+> 🐧 React 러닝 가이드 E-Book의 [React 개발 도구 확장](https://yamoo9.github.io/react-master/lecture/r-setting-up.html) 영상 강의를 확인하세요.
 
 확장 | 설명
 --- | ---

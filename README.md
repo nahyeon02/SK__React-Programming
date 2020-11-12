@@ -10,10 +10,10 @@ React 프로그래밍 2020 학습 저장소
 
 ## 학습 환경
 
-원할한 학습 진행을 위해 학습 환경을 구성합니다.
+원할한 학습 진행을 위해 Windows 학습 환경을 구성합니다.
 
 - [Chrome 웹 브라우저 & 확장 (GitHub 계정 요구)](./configuration/chrome-extensions.md)
-- [Node.js 런타임 설치 (NVM 활용)](./configuration/nvm-for-windows.md)
+- [Node.js 런타임 설치 (NVM4W 활용)](./configuration/nvm-for-windows.md)
 - [Windows 10, WSL Bash 명령어 환경 구성](./configuration/wsl-bash-command-env.md)
 - [Visual Studio Code & 확장](./configuration/vscode-extensions.md)
 - [React 러닝 가이드 E-Book](https://yamoo9.github.io/react-master)
@@ -29,7 +29,7 @@ React 프로그래밍 학습 세부 커리큘럼은 아래와 같고, 상황에 
   <br/>
 
   - React 개발 환경 구성
-  - ECMAScript (ES6-8) 
+  - ECMAScript (ES6-8)
   - React 컴포넌트와 엘리먼트 (JSX & Babel)
   - React 렌더링의 비밀 Virtual DOM
   - JSX 리스트 / 조건부 렌더링
