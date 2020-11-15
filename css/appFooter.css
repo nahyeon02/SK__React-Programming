@@ -1,0 +1,124 @@
+.appFooter {
+  position: relative;
+  z-index: 100;
+  margin-top: -18rem;
+  transition: margin-top 0.4s ease;
+}
+
+.appAddress {
+  text-align: center;
+  font-size: 1rem;
+  color: #9e9e9e;
+}
+
+.appAddress__item {
+  display: inline-flex;
+  margin-bottom: 0.4rem;
+}
+
+.appAddress__item dt {
+  margin-right: 0.5rem;
+}
+
+.appAddress__item span[aria-hidden] {
+  margin: 0 0.2rem;
+}
+
+.appAddress__item a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.9);
+}
+
+.appAddress__item::after {
+  content: '/';
+  margin: 0 0.2rem 0 0.5rem;
+}
+
+.appAddress__item:nth-of-type(2)::after,
+.appAddress__item:last-of-type::after {
+  content: '';
+}
+
+.button__privacyPolicy:hover {
+  color: var(--color-white);
+}
+
+.dialog {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  top: 10rem;
+  left: 50%;
+  width: 90%;
+  max-width: 70rem;
+  height: 75%;
+  max-height: 80rem;
+  padding: 4rem;
+  text-align: left;
+  font-size: 1.3rem;
+  background:#fff;
+  color: var(--color-black);
+  transform: translateX(-50%);
+  box-shadow: 0 0.8rem 1.5rem 0.2rem rgba(0,0,0,0.6);
+}
+
+.dialog--show {
+  display: block;
+}
+
+.dialog__title {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+  padding-bottom: 2rem;
+  font-size: 2.2rem;
+}
+
+.dialog__content {
+  overflow: auto;
+  white-space: pre-line;
+  font-family: inherit;
+  line-height: 1.5;
+  height: calc(100% - 8rem);
+  padding-right: 1rem;
+}
+
+.dialog__button {
+  position: absolute;
+  top: 3.2rem;
+  right: 4rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.dialog__dim {
+  display: none;
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.dialog__dim--show {
+  display: block;
+}
+
+/* -------------------------------------------------------------------------- */
+
+
+@media (min-width: 32em /* 512px */) {
+  .appFooter {
+    margin-top: -11rem;
+  }
+}
+
+@media (min-width: 48.75em /* 780px */) {
+  .appFooter {
+    max-width: 72rem;
+    margin-top: -9rem;
+  }
+}

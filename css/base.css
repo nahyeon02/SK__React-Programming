@@ -1,0 +1,38 @@
+.linkA {
+  user-select: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.button {
+  user-select: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.img {
+  vertical-align: middle;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.dl,
+.dl dt,
+.dl dd {
+  margin: 0;
+}
+
+.navigationList {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.address {
+  font-style: normal;
+}

@@ -1,0 +1,9 @@
+::selection {
+  background: var(--color-accent, #131313);
+  color: var(--color-white, #efefef);
+}
+
+img::selection,
+button::selection {
+  background: transparent;
+}
