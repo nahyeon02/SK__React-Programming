@@ -1,6 +1,8 @@
 ### ACCOUNT ###
 email    = react@sk.com
 password = react@sk
+stripjs
+
 
 ### Node ###
 # Logs
