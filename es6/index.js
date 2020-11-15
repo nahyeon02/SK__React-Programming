@@ -1,0 +1,6 @@
+import './modules/settingWallpaper.js'
+import './modules/settingFeatureSection.js'
+import './modules/settingAppNavigation.js'
+import './modules/settingAppHeader.js'
+import './modules/settingDialog.js'
+import './modules/settingShortcut.js'

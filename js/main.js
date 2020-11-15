@@ -1,3 +1,6 @@
+var setTimeout = window.setTimeout;
+var clearTimeout = window.clearTimeout;
+
 /* -------------------------------------------------------------------------- */
 // 실습 1. 월페이퍼 리스트 만들기
 
@@ -43,7 +46,7 @@ var wallpapers = [
   'v1598872002/lbh8tismjjhto8fhmixx',
   'v1598871772/buymmshxvklvpxdnw968',
   'v1598872045/yejizhji2kl6v6vq7im5',
-]
+];
 
 wallpapers = wallpapers.map(function (path) {
   return 'https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/' + path;
@@ -57,10 +60,22 @@ var DISPLAY_WALLPAPER_COUNT = 6;
 
 // 클래스 이름
 var CLASSES = {
-  featureSection: 'featureSection',
+  appHeader: 'appHeader',
   appNavigationButton: {
     normal: 'appNavigation__button',
     active: 'appNavigation__button--active',
+    goToSection: 'button--goToSection',
+    next: 'button--next',
+    first: 'button--first',
+  },
+  featureSection: 'featureSection',
+  dialog: {
+    self: 'dialog',
+    button: 'button__privacyPolicy',
+    closeButton: 'dialog__button',
+    dim: 'dialog__dim',
+    selfShow: 'dialog--show',
+    dimShow: 'dialog__dim--show',
   },
 };
 
@@ -79,7 +94,8 @@ shuffle(wallpapers)
   // [2] 필터링 된 배열을 순환
   .forEach(function (imagePath, index) {
     // [3] 월페이퍼를 그릴 섹션의 가상 클래스 선택자 설정
-    var selector = '.' + CLASSES.featureSection + ':nth-of-type(' + ++index + ')::before';
+    var selector =
+      '.' + CLASSES.featureSection + ':nth-of-type(' + ++index + ')::before';
 
     // [4] 설정된 가상 클래스 선택자에 배경 이미지 스타일 규칙 삽입
     insertStyleRules(selector, {
@@ -87,9 +103,9 @@ shuffle(wallpapers)
     });
 
     // [5] 화면에 표시 할 타임아웃 설정에 따라
-    window.setTimeout(function () {
+    setTimeout(function () {
       // 불투명도 1 설정 추가 삽입
-      insertStyleRules(selector, { 'opacity': 1 });
+      insertStyleRules(selector, { opacity: 1 });
     }, SHOW_TIMEOUT);
   });
 
@@ -116,7 +132,9 @@ var handleGoToSectionWrapper = function (index) {
     // goToSection 버튼인 경우
     else {
       // 첫번째 섹션으로 이동하는 버튼인지 확인
-      var isGoToFirst = this.classList.contains('button--first');
+      var isGoToFirst = this.classList.contains(
+        CLASSES.appNavigationButton.first
+      );
       // 조건 처리에 따라 목표 인덱스 설정
       targetIndex = !isGoToFirst ? index + 1 : 0;
       // 조건 처리에 따라 섹션 이동 함수 실행 (옵션 설정)
@@ -142,11 +160,11 @@ var goToSection = function (index, usingAppNavigation) {
     // 이미 설정된 타임아웃 ID가 있을 경우
     if (goToSection.timeoutId) {
       // 설정된 타임아웃 클리어(해제)
-      window.clearTimeout(goToSection.timeoutId);
+      clearTimeout(goToSection.timeoutId);
     }
-    // [접근성] 스크롤 타임아웃이 지나면, 
+    // [접근성] 스크롤 타임아웃이 지나면,
     // 타임아웃 설정 ID 값을 메모리(기억) → 필요할 때 설정 해제 목적
-    goToSection.timeoutId = window.setTimeout(function () {
+    goToSection.timeoutId = setTimeout(function () {
       // 목표 섹션에 포커스 설정
       targetSection.focus();
     }, SCROLL_TIMEOUT);
@@ -168,7 +186,9 @@ featureSections.forEach(function (section) {
 // 섹션 NodeList 집합을 배열로 변경한 후, forEach()를 사용해 순환 처리
 makeArray(featureSections).forEach(function (section, index) {
   // 개별 섹션에서 다른 섹션으로 이동하는 기능을 설정할 버튼 요소 참조
-  var buttonGoToSection = section.querySelector('.button--goToSection');
+  var buttonGoToSection = section.querySelector(
+    '.' + CLASSES.appNavigationButton.goToSection
+  );
   // 버튼 요소에 click 이벤트 연결 ← 이벤트 리스너(클로저 함수)를 반환하는 래퍼 함수에 index 전달
   buttonGoToSection.addEventListener('click', handleGoToSectionWrapper(index));
 });
@@ -177,7 +197,9 @@ makeArray(featureSections).forEach(function (section, index) {
 // 실습 4. 앱 내비게이션 버튼 수집 및 이벤트 핸들링
 
 // 앱 내비게이션 버튼(인디케이터)을 모두 수집하여 참조
-var appNavButtons = document.querySelectorAll('.appNavigation__button');
+var appNavButtons = document.querySelectorAll(
+  '.' + CLASSES.appNavigationButton.normal
+);
 
 // 앱 내비게이션 버튼(인디케이터) 활성화 설정 함수
 var activeAppNavButton = function (index) {
@@ -217,7 +239,7 @@ makeArray(appNavButtons)
 /* -------------------------------------------------------------------------- */
 // 실습 5. 앱 헤더 표시, 감춤 설정
 
-// 스크롤 상태 설정 
+// 스크롤 상태 설정
 // [1] 이전 스크롤 Y축 높이
 var prevScrollYposition = 0;
 // [2] 활성 인덱스
@@ -240,13 +262,13 @@ var isInActiveSectionArea = function (section) {
 
 // 활성화 된 섹션의 인덱스를 반환하는 함수
 var findIndexOfActiveSectionArea = function () {
-  var findedIndex = 
+  var findedIndex =
     // 섹션 집합을 배열화
     makeArray(featureSections)
-    // 활성화 된 섹션의 인덱스를 찾아 반환
-    .findIndex(function (section) {
-    return isInActiveSectionArea(section);
-  });
+      // 활성화 된 섹션의 인덱스를 찾아 반환
+      .findIndex(function (section) {
+        return isInActiveSectionArea(section);
+      });
 
   // 찾은 인덱스 반환
   return findedIndex;
@@ -263,7 +285,7 @@ var hideAppHeader = function () {
 };
 
 // 앱 헤더 요소 찾아 참조
-var appHeader = document.querySelector('.appHeader');
+var appHeader = document.querySelector('.' + CLASSES.appHeader);
 
 // scroll 이벤트 연결
 window.addEventListener('scroll', function () {
@@ -296,11 +318,11 @@ window.addEventListener('scroll', function () {
   // 설정된 타임아웃 ID가 있을 경우
   if (clearTimeoutId) {
     // 타임아웃 ID를 전달해 설정된 타임아웃 해제
-    window.clearTimeout(clearTimeoutId);
+    clearTimeout(clearTimeoutId);
   }
 
   // 1초 뒤에 섹션으로 이동되도록 goToSection() 함수 실행 - activeIndex 전달
-  clearTimeoutId = window.setTimeout(function () {
+  clearTimeoutId = setTimeout(function () {
     goToSection(activeIndex);
   }, 1000);
 
@@ -312,20 +334,20 @@ window.addEventListener('scroll', function () {
 // 실습 6. 다이얼로그 표시, 감춤 설정
 
 // '개인정보 처리 방침' 버튼 참조
-var buttonPrivacyPolicy = document.querySelector('.button__privacyPolicy');
+var buttonPrivacyPolicy = document.querySelector('.' + CLASSES.dialog.button);
 // 다이얼로그 요소 참조
-var dialog = document.querySelector('.dialog');
+var dialog = document.querySelector('.' + CLASSES.dialog.self);
 // 다이얼로그 닫기 버튼 요소 참조
-var buttonDialog = dialog.querySelector('.dialog__button');
+var buttonDialog = dialog.querySelector('.' + CLASSES.dialog.closeButton);
 // 다이얼로그 딤 요소 참조
-var dialogDim = document.querySelector('.dialog__dim');
+var dialogDim = document.querySelector('.' + CLASSES.dialog.dim);
 
 // 다이얼로그 표시 이벤트 리스너
 var handleShowDialog = function () {
   // 다이얼로그 표시 클래스 속성 이름 추가
-  dialog.classList.add('dialog--show');
+  dialog.classList.add(CLASSES.dialog.selfShow);
   // 다이얼로그 딤 표시 클래스 속성 이름 추가
-  dialogDim.classList.add('dialog__dim--show');
+  dialogDim.classList.add(CLASSES.dialog.dimShow);
   // [접근성] 다이얼로그 포커스 이동
   dialog.focus();
 };
@@ -333,9 +355,9 @@ var handleShowDialog = function () {
 // 다이얼로그 감춤 이벤트 리스너
 var handleHideDialog = function () {
   // 다이얼로그 감춤 클래스 속성 이름 제거
-  dialog.classList.remove('dialog--show');
+  dialog.classList.remove(CLASSES.dialog.selfShow);
   // 다이얼로그 딤 감춤 클래스 속성 이름 제거
-  dialogDim.classList.remove('dialog__dim--show');
+  dialogDim.classList.remove(CLASSES.dialog.dimShow);
   // [접근성] '개인정보 처리 방침' 버튼에 포커스 이동
   buttonPrivacyPolicy.focus();
 };
@@ -353,7 +375,7 @@ buttonDialog.addEventListener('click', handleHideDialog);
 // 실습 7. 내비게이션 단축키 제공
 
 // keyup 이벤트 연결
-window.addEventListener('keyup', function(e) { 
+window.addEventListener('keyup', function (e) {
   // 키 입력 값을 숫자로 변경
   var key = Number(e.key);
 
@@ -366,4 +388,4 @@ window.addEventListener('keyup', function(e) {
       goToSection(keyIndex);
     }
   }
-})
+});

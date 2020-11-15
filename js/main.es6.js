@@ -47,7 +47,9 @@ let wallpapers = [
   'v1598872045/yejizhji2kl6v6vq7im5',
 ]
 
-wallpapers = wallpapers.map((path) => `https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/${path}`)
+wallpapers = wallpapers.map(
+  (path) => `https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/${path}`
+)
 
 /* -------------------------------------------------------------------------- */
 // 실습 0. 프로젝트에 사용된 상수 설정
@@ -61,6 +63,7 @@ const CLASSES = {
   appNavigationButton: {
     normal: 'appNavigation__button',
     active: 'appNavigation__button--active',
+    goToSection: 'button--goToSection',
     next: 'button--next',
     first: 'button--first',
   },
@@ -72,17 +75,15 @@ const CLASSES = {
     dim: 'dialog__dim',
     selfShow: 'dialog--show',
     dimShow: 'dialog__dim--show',
-  }
+  },
 }
 
 // 타임아웃
 const SHOW_TIMEOUT = 500
 const SCROLL_TIMEOUT = 1000
 
-
 /* -------------------------------------------------------------------------- */
 // 실습 2. 월페이퍼 랜덤 셔플 → 필터링 → 로딩 → 표시
-
 
 shuffle(wallpapers)
   // [1] 월페이퍼 뒤섞어 화면에 표시 할 개수만큼 골라내기
@@ -90,8 +91,10 @@ shuffle(wallpapers)
   // [2] 필터링 된 배열을 순환
   .forEach((imagePath, index) => {
     // [3] 월페이퍼를 그릴 섹션의 가상 클래스 선택자 설정
-    const selector = `.${CLASSES.featureSection}:nth-of-type(${index + 1})::before`
-    
+    const selector = `.${CLASSES.featureSection}:nth-of-type(${
+      index + 1
+    })::before`
+
     // [4] 설정된 가상 클래스 선택자에 배경 이미지 스타일 규칙 삽입
     insertStyleRules(selector, {
       'background-image': `url(${imagePath}.jpg)`,
@@ -112,7 +115,7 @@ const featureSections = document.querySelectorAll(`.${CLASSES.featureSection}`)
 // 클로저 함수를 반환하는 래퍼 함수
 const handleGoToSectionWrapper = (index) => {
   // 이벤트 리스너로 반환 될 클로저 함수
-  return function() {
+  return function () {
     // 목표 인덱스 초기 설정
     let targetIndex = 0
     const {
@@ -179,7 +182,8 @@ featureSections.forEach((section) => section.setAttribute('tabindex', -1))
 // 섹션 NodeList 집합을 배열로 변경한 후, forEach()를 사용해 순환 처리
 makeArray(featureSections).forEach((section, index) => {
   // 개별 섹션에서 다른 섹션으로 이동하는 기능을 설정할 버튼 요소 참조
-  const buttonGoToSection = section.querySelector('.button--goToSection')
+  const { goToSection } = CLASSES.appNavigationButton
+  const buttonGoToSection = section.querySelector(`.${goToSection}`)
   // 버튼 요소에 click 이벤트 연결 ← 이벤트 리스너(클로저 함수)를 반환하는 래퍼 함수에 index 전달
   buttonGoToSection.addEventListener('click', handleGoToSectionWrapper(index))
 })
@@ -223,7 +227,9 @@ const activeAppNavButton = (index) => {
 makeArray(appNavButtons)
   // 배열 데이터 순환
   // 버튼 요소에 click 이벤트 연결 ← 이벤트 리스너(클로저 함수)를 반환하는 래퍼 함수에 index 전달
-  .forEach((button, index) => button.addEventListener('click', handleGoToSectionWrapper(index)))
+  .forEach((button, index) =>
+    button.addEventListener('click', handleGoToSectionWrapper(index))
+  )
 
 /* -------------------------------------------------------------------------- */
 // 실습 5. 앱 헤더 표시, 감춤 설정
@@ -262,10 +268,11 @@ const findIndexOfActiveSectionArea = () => {
 }
 
 // 앱 헤더를 화면에 표시하는 함수
-const showAppHeader = () => appHeader.style.transform = 'translate(-50%, 0)'
+const showAppHeader = () => (appHeader.style.transform = 'translate(-50%, 0)')
 
 // 앱 헤더를 화면에서 감추는 함수
-const hideAppHeader = () => appHeader.style.transform = 'translate(-50%, -100%)'
+const hideAppHeader = () =>
+  (appHeader.style.transform = 'translate(-50%, -100%)')
 
 // 앱 헤더 요소 찾아 참조
 const appHeader = document.querySelector(`.${CLASSES.appHeader}`)
@@ -273,7 +280,7 @@ const appHeader = document.querySelector(`.${CLASSES.appHeader}`)
 // scroll 이벤트 연결
 window.addEventListener('scroll', () => {
   // 브라우저 창의 스크롤 Y축 높이 값을 현재 스크롤 위치로 설정
-  const {scrollY: currentScrollYposition} = window
+  const { scrollY: currentScrollYposition } = window
 
   // 조건 처리
   if (
@@ -305,7 +312,7 @@ window.addEventListener('scroll', () => {
   }
 
   // 1초 뒤에 섹션으로 이동되도록 goToSection() 함수 실행 - activeIndex 전달
-  clearTimeoutId = setTimeout( () => goToSection(activeIndex), 1000)
+  clearTimeoutId = setTimeout(() => goToSection(activeIndex), 1000)
 
   // 현재 스크롤 Y 높이 값 → 이전 스크롤 Y 높이 값 업데이트
   prevScrollYposition = currentScrollYposition
@@ -319,7 +326,7 @@ const {
   closeButton: dialogCloseButtonClass,
   dim: dialogDimClass,
   selfShow: dialogShowClass,
-  dimShow: dialogdimShowClass
+  dimShow: dialogdimShowClass,
 } = CLASSES.dialog
 
 // '개인정보 처리 방침' 버튼 참조
