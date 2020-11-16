@@ -1,0 +1,17 @@
+:root {
+  --color-focus-visible: var(--color-accent);
+  --focus-visible-value: 0 0 0 4px var(--color-focus-visible);
+}
+
+:focus {
+  outline: none;
+  box-shadow: var(--focus-visible-value);
+}
+
+:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+:focus-visible {
+  box-shadow: var(--focus-visible-value);
+}

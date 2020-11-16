@@ -1,0 +1,12 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  font: 1.6rem/1.5 SpoqaHanSans, "Helvetica Neue", Verdana, Sans-Serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0;
+}
+

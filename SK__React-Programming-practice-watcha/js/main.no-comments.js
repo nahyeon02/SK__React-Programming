@@ -1,10 +1,7 @@
-// hoist, closure
-// const setTimeout = window.setTimeout;
-// 객체 구조 분해 할당(Destructring)
-const { setTimeout, clearTimeout } = window
+var setTimeout = window.setTimeout;
+var clearTimeout = window.clearTimeout;
 
-// ES6+ 모던 자바스크립트에서는 var 쓰지 않고, let 변수 사용
-let wallpapers = [
+var wallpapers = [
   'v1598872050/ixylk0psxr8zjasxqce6',
   'v1598871763/p8gblpumiwypzg1yzrnx',
   'v1599214078/yz7ovukznj2qqlau1vmp',
@@ -46,20 +43,15 @@ let wallpapers = [
   'v1598872002/lbh8tismjjhto8fhmixx',
   'v1598871772/buymmshxvklvpxdnw968',
   'v1598872045/yejizhji2kl6v6vq7im5',
-]
+];
 
-// 화살표(Arrow) 함수 () => {}
-// 템플릿 리터럴 (보간법, interporation, ${}), `문자 ${between} 값`
-const WATCHA_ADDRESS =
-  'https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/'
+wallpapers = wallpapers.map(function (path) {
+  return 'https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/' + path;
+});
 
-// 배열 객체 소유한 능력 : map, filter, find, findIndex, reduce
-// 배열 원본을 파괴하는 메서드 : push, pop, shift, unshift, splice
-wallpapers = wallpapers.map((path) => `${WATCHA_ADDRESS}${path}`)
+var DISPLAY_WALLPAPER_COUNT = 6;
 
-const DISPLAY_WALLPAPER_COUNT = 6
-
-const CLASSES = {
+var CLASSES = {
   appHeader: 'appHeader',
   appNavigationButton: {
     normal: 'appNavigation__button',
@@ -77,202 +69,200 @@ const CLASSES = {
     selfShow: 'dialog--show',
     dimShow: 'dialog__dim--show',
   },
-}
+};
 
-const SHOW_TIMEOUT = 500
-const SCROLL_TIMEOUT = 1000
+var SHOW_TIMEOUT = 500;
+var SCROLL_TIMEOUT = 1000;
 
 shuffle(wallpapers)
-  .filter((wallpaper, index) => index < DISPLAY_WALLPAPER_COUNT)
-  .forEach((imagePath, index) => {
-    // 템플릿 리터럴
-    const selector = `.${
-      CLASSES.featureSection
-    }:nth-of-type(${++index})::before`
-
-    // '.' + CLASSES.featureSection + ':nth-of-type(' + ++index + ')::before'
+  .filter(function (wallpaper, index) {
+    return index < DISPLAY_WALLPAPER_COUNT;
+  })
+  .forEach(function (imagePath, index) {
+    var selector =
+      '.' + CLASSES.featureSection + ':nth-of-type(' + ++index + ')::before';
 
     insertStyleRules(selector, {
-      // 'background-image': 'url(' + imagePath + '.jpg)',
-      'background-image': `url(${imagePath}.jpg)`,
-    })
+      'background-image': 'url(' + imagePath + '.jpg)',
+    });
 
-    window.setTimeout(
-      () => insertStyleRules(selector, { opacity: 1 }),
-      SHOW_TIMEOUT
-    )
-  })
+    window.setTimeout(function () {
+      insertStyleRules(selector, {
+        opacity: 1,
+      });
+    }, SHOW_TIMEOUT);
+  });
 
-var featureSections = document.querySelectorAll('.' + CLASSES.featureSection)
+var featureSections = document.querySelectorAll('.' + CLASSES.featureSection);
 
 var handleGoToSectionWrapper = function (index) {
   return function () {
-    var targetIndex = 0
+    var targetIndex = 0;
 
     if (this.className.includes(CLASSES.appNavigationButton.normal)) {
-      targetIndex = index
-      goToSection(targetIndex, true)
+      targetIndex = index;
+      goToSection(targetIndex, true);
     } else {
       var isGoToFirst = this.classList.contains(
         CLASSES.appNavigationButton.first
-      )
+      );
 
-      targetIndex = !isGoToFirst ? index + 1 : 0
+      targetIndex = !isGoToFirst ? index + 1 : 0;
 
-      !isGoToFirst ? goToSection(targetIndex) : goToSection(targetIndex, true)
+      !isGoToFirst ? goToSection(targetIndex) : goToSection(targetIndex, true);
     }
-  }
-}
+  };
+};
 
 var goToSection = function (index, usingAppNavigation) {
-  var targetSection = featureSections[index]
+  var targetSection = featureSections[index];
 
   targetSection.scrollIntoView({
     behavior: 'smooth',
-  })
+  });
 
-  activeAppNavButton(index)
+  activeAppNavButton(index);
 
   if (usingAppNavigation) {
     if (goToSection.timeoutId) {
-      window.clearTimeout(goToSection.timeoutId)
+      window.clearTimeout(goToSection.timeoutId);
     }
 
     goToSection.timeoutId = window.setTimeout(function () {
-      targetSection.focus()
-    }, SCROLL_TIMEOUT)
+      targetSection.focus();
+    }, SCROLL_TIMEOUT);
   }
-}
+};
 
-goToSection.timeoutId = null
+goToSection.timeoutId = null;
 
 featureSections.forEach(function (section) {
-  section.setAttribute('tabindex', -1)
-})
+  section.setAttribute('tabindex', -1);
+});
 
 makeArray(featureSections).forEach(function (section, index) {
   var buttonGoToSection = section.querySelector(
     '.' + CLASSES.appNavigationButton.goToSection
-  )
+  );
 
-  buttonGoToSection.addEventListener('click', handleGoToSectionWrapper(index))
-})
+  buttonGoToSection.addEventListener('click', handleGoToSectionWrapper(index));
+});
 
 var appNavButtons = document.querySelectorAll(
   '.' + CLASSES.appNavigationButton.normal
-)
+);
 
 var activeAppNavButton = function (index) {
-  var activeClassName = CLASSES.appNavigationButton.active
+  var activeClassName = CLASSES.appNavigationButton.active;
 
-  var activeNavButton = appNavButtons[index]
+  var activeNavButton = appNavButtons[index];
 
   var preActiveButton = makeArray(appNavButtons).find(function (button) {
-    return button.classList.contains(activeClassName)
-  })
+    return button.classList.contains(activeClassName);
+  });
 
   if (!activeNavButton.isEqualNode(preActiveButton)) {
-    preActiveButton.classList.remove(activeClassName)
+    preActiveButton.classList.remove(activeClassName);
   }
 
-  activeNavButton.classList.add(activeClassName)
-}
+  activeNavButton.classList.add(activeClassName);
+};
 
 makeArray(appNavButtons).forEach(function (button, index) {
-  button.addEventListener('click', handleGoToSectionWrapper(index))
-})
+  button.addEventListener('click', handleGoToSectionWrapper(index));
+});
 
-var prevScrollYposition = 0
+var prevScrollYposition = 0;
 
-var activeIndex = 0
+var activeIndex = 0;
 
-var clearTimeoutId = null
+var clearTimeoutId = null;
 
 var isInActiveSectionArea = function (section) {
-  var rect = section.getBoundingClientRect()
+  var rect = section.getBoundingClientRect();
 
-  var top = rect.top
+  var top = rect.top;
 
-  var halfHeight = rect.height / 2
+  var halfHeight = rect.height / 2;
 
-  return top > -halfHeight && top <= halfHeight
-}
+  return top > -halfHeight && top <= halfHeight;
+};
 
 var findIndexOfActiveSectionArea = function () {
   var findedIndex = makeArray(featureSections).findIndex(function (section) {
-    return isInActiveSectionArea(section)
-  })
+    return isInActiveSectionArea(section);
+  });
 
-  return findedIndex
-}
+  return findedIndex;
+};
 
 var showAppHeader = function () {
-  appHeader.style.transform = 'translate(-50%, 0)'
-}
+  appHeader.style.transform = 'translate(-50%, 0)';
+};
 
 var hideAppHeader = function () {
-  appHeader.style.transform = 'translate(-50%, -100%)'
-}
+  appHeader.style.transform = 'translate(-50%, -100%)';
+};
 
-var appHeader = document.querySelector('.' + CLASSES.appHeader)
+var appHeader = document.querySelector('.' + CLASSES.appHeader);
 
 window.addEventListener('scroll', function () {
-  var currentScrollYposition = window.scrollY
+  var currentScrollYposition = window.scrollY;
 
   if (
     prevScrollYposition > currentScrollYposition ||
     prevScrollYposition === 0
   ) {
-    showAppHeader()
+    showAppHeader();
   }
 
   if (prevScrollYposition <= currentScrollYposition) {
-    hideAppHeader()
+    hideAppHeader();
   }
 
-  activeIndex = findIndexOfActiveSectionArea()
+  activeIndex = findIndexOfActiveSectionArea();
 
-  activeAppNavButton(activeIndex)
+  activeAppNavButton(activeIndex);
 
   if (clearTimeoutId) {
-    window.clearTimeout(clearTimeoutId)
+    window.clearTimeout(clearTimeoutId);
   }
 
   clearTimeoutId = window.setTimeout(function () {
-    goToSection(activeIndex)
-  }, 1000)
+    goToSection(activeIndex);
+  }, 1000);
 
-  prevScrollYposition = currentScrollYposition
-})
+  prevScrollYposition = currentScrollYposition;
+});
 
-var buttonPrivacyPolicy = document.querySelector('.' + CLASSES.dialog.button)
-var dialog = document.querySelector('.' + CLASSES.dialog.self)
-var buttonDialog = dialog.querySelector('.' + CLASSES.dialog.closeButton)
-var dialogDim = document.querySelector('.' + CLASSES.dialog.dim)
+var buttonPrivacyPolicy = document.querySelector('.' + CLASSES.dialog.button);
+var dialog = document.querySelector('.' + CLASSES.dialog.self);
+var buttonDialog = dialog.querySelector('.' + CLASSES.dialog.closeButton);
+var dialogDim = document.querySelector('.' + CLASSES.dialog.dim);
 
 var handleShowDialog = function () {
-  dialog.classList.add(CLASSES.dialog.selfShow)
-  dialogDim.classList.add(CLASSES.dialog.dimShow)
-  dialog.focus()
-}
+  dialog.classList.add(CLASSES.dialog.selfShow);
+  dialogDim.classList.add(CLASSES.dialog.dimShow);
+  dialog.focus();
+};
 
 var handleHideDialog = function () {
-  dialog.classList.remove(CLASSES.dialog.selfShow)
-  dialogDim.classList.remove(CLASSES.dialog.dimShow)
-  buttonPrivacyPolicy.focus()
-}
+  dialog.classList.remove(CLASSES.dialog.selfShow);
+  dialogDim.classList.remove(CLASSES.dialog.dimShow);
+  buttonPrivacyPolicy.focus();
+};
 
-dialog.setAttribute('tabindex', -1)
+dialog.setAttribute('tabindex', -1);
 
-buttonPrivacyPolicy.addEventListener('click', handleShowDialog)
-buttonDialog.addEventListener('click', handleHideDialog)
+buttonPrivacyPolicy.addEventListener('click', handleShowDialog);
+buttonDialog.addEventListener('click', handleHideDialog);
 
 window.addEventListener('keyup', function (e) {
-  var key = Number(e.key)
+  var key = Number(e.key);
   if (e.ctrlKey && typeof key === 'number') {
-    var keyIndex = key - 1
+    var keyIndex = key - 1;
     if (keyIndex < featureSections.length) {
-      goToSection(keyIndex)
+      goToSection(keyIndex);
     }
   }
-})
+});

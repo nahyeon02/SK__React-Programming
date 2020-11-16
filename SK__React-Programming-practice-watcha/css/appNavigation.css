@@ -1,0 +1,69 @@
+.appNavigation--fixed {
+  position: fixed;
+  z-index: 80;
+  top: 16vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.appNavigation .navigationList {
+  display: flex;
+  flex-flow: row;
+}
+
+.appNavigation__button {
+  --size: 2rem;
+
+  position: relative;
+  display: block;
+  width: var(--size, 1.8rem);
+  height: var(--size, 1.8rem);
+  margin: 1rem;
+  border-radius: 50%;
+  background: rgba(240, 240, 240, 0.45);
+  transition: all 0.4s ease;
+}
+
+.appNavigation__button--active {
+  background: var(--color-white);
+}
+
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 48.75em /* 780px */) {
+  .appNavigation--fixed {
+    top: 50%;
+    right: 3rem;
+    left: initial;
+    transform: translateY(-50%);
+  }
+
+  .appNavigation .navigationList {
+    flex-flow: column;
+  }
+
+  .tooltip {
+    opacity: 0;
+    position: absolute;
+    top: -0.4rem;
+    right: 0;
+    width: 7rem;
+    text-align: right;
+    line-height: 1.45;
+    font-size: 1.1rem;
+    text-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.65);
+    transition: all 0.3s ease;
+  }
+
+  .appNavigation__button:hover .tooltip,
+  .appNavigation__button:focus-visible .tooltip {
+    /* a11yHidden 초기화 */
+    overflow: initial;
+    clip: initial;
+    clip-path: initial;
+    white-space: initial;
+    /* 화면에 표시 */
+    opacity: 1;
+    right: 3rem;
+  }
+}
