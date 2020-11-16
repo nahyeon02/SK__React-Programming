@@ -1,6 +1,8 @@
 import Header from 'components/Header'
 import Logo from 'assets/Logo.svg'
 
+/* -------------------------------------------------------------------------- */
+
 export default function HeaderContainer() {
   return (
     <Header>

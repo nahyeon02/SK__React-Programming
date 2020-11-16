@@ -11,25 +11,34 @@ export default function Header({ children, className, ...restProps }) {
   )
 }
 
-Header.Brand = ({ children, className, ...restProps }) => (
-  <Brand>
-    <HomeLink
+Header.Brand = function HeaderBrand({ children, className, ...restProps }) {
+  return (
+    <Brand>
+      <HomeLink
+        {...restProps}
+        className={classNames('resetA', className)}
+        href="/"
+      >
+        {children}
+      </HomeLink>
+    </Brand>
+  )
+}
+
+Header.SignInLink = function HeaderSignInLink({
+  children,
+  className,
+  external,
+  ...restProps
+}) {
+  return (
+    <SignInLink
       {...restProps}
       className={classNames('resetA', className)}
-      href="/"
+      target={external ? '_blank' : null}
+      rel={external ? 'noopener noreffer' : null}
     >
       {children}
-    </HomeLink>
-  </Brand>
-)
-
-Header.SignInLink = ({ children, className, external, ...restProps }) => (
-  <SignInLink
-    {...restProps}
-    className={classNames('resetA', className)}
-    target={external ? '_blank' : null}
-    rel={external ? 'noopener noreffer' : null}
-  >
-    {children}
-  </SignInLink>
-)
+    </SignInLink>
+  )
+}

@@ -139,7 +139,7 @@ export const GlobalStyles = createGlobalStyle`
   .resetButton {
     user-select: none;
     cursor: pointer;
-    background: transparent;
+    /* background: transparent; */
     border: 0;
     padding: 0;
   }
