@@ -36,7 +36,7 @@ Indicators.Item = function IndicatorsItem({
       <Button
         type="button"
         className={classNames(
-          'resetButton',
+          // 'resetButton',
           className,
           active ? 'is-active' : null
         )}

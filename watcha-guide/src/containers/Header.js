@@ -1,4 +1,4 @@
-import Header from 'components/Header'
+import { Header } from 'components'
 import Logo from 'assets/Logo.svg'
 
 /* -------------------------------------------------------------------------- */

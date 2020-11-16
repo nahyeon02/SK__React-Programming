@@ -1,10 +1,15 @@
 import { Component } from 'react'
-import { HeaderContainer, IndicatorsContainer } from '~/containers'
+import {
+  HeaderContainer,
+  IndicatorsContainer,
+  MainContainer,
+} from '~/containers'
 
 const { PUBLIC_URL } = process.env
 
 export default class Home extends Component {
   state = {
+    sections: [],
     indicators: [],
     activeIndex: 0,
     isLoading: false,
@@ -25,6 +30,7 @@ export default class Home extends Component {
 
       this.setState({
         isLoading: false,
+        sections: data,
         indicators: data.map(({ headline, id }) => ({
           abbr: headline.abbr,
           id,
@@ -40,12 +46,13 @@ export default class Home extends Component {
   }
 
   render() {
-    const { indicators, activeIndex } = this.state
+    const { sections, indicators, activeIndex } = this.state
 
     return (
       <>
         <HeaderContainer />
         <IndicatorsContainer list={indicators} activeIndex={activeIndex} />
+        <MainContainer list={sections} />
       </>
     )
   }

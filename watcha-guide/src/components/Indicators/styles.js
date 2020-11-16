@@ -28,11 +28,13 @@ export const Container = styled.nav`
 
 // button.appNavigation__button.appNavigation__button--active
 export const Button = styled.button`
+  cursor: pointer;
   position: relative;
   display: block;
   width: ${({ size }) => size || '1.8rem'};
   height: ${({ size }) => size || '1.8rem'};
   margin: 1rem;
+  border: 0;
   border-radius: 50%;
   background: rgba(240, 240, 240, 0.45);
   transition: all 0.4s ease;
