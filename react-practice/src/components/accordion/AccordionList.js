@@ -44,7 +44,10 @@ export default class accordionList extends Component {
               active={currentIndex === index}
               onChangeIndex={this.changeCurrentIndex}
             />
-            <AccordionPanel className="accordion__panel">
+            <AccordionPanel
+              className="accordion__panel"
+              active={currentIndex === index}
+            >
               {item.panelInfo}
             </AccordionPanel>
           </li>
