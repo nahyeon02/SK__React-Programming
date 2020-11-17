@@ -13,10 +13,10 @@
 
 - JSX 활용
 - `props`를 활용한 컴포넌트 통신
-- 고차 컴포넌트(HOC)
 - Context API
 - 훅(Hooks)
-- 접근성(A11Y)
+- <s>고차 컴포넌트(HOC)</s>
+- <s>접근성(A11Y)</s>
 
 ## React Advanced
 
@@ -28,13 +28,13 @@
 - Styled Components 라이브러리 설치
 - CSS in JS 스타일링 패턴
 
-## Redux
+## <s>Redux</s>
 
-- Redux 라이브러리 설치
-- Redux 상태 관리 패턴
+- <s>Redux 라이브러리 설치</s>
+- <s>Redux 상태 관리 패턴</s>
 
-## React Redux
+## <s>React Redux</s>
 
-- React Redux 라이브러리 설치
-- 고차 컴포넌트(HOC) 활용
-- 훅(Hooks) 활용
+- <s>React Redux 라이브러리 설치</s>
+- <s>고차 컴포넌트(HOC) 활용</s>
+- <s>훅(Hooks) 활용</s>
