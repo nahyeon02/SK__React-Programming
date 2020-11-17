@@ -27,7 +27,11 @@ Main.Description = function MainDescription({
   className,
   ...restProps
 }) {
-  return <Description className={classNames(className)}>{children}</Description>
+  return (
+    <Description {...restProps} className={classNames(className)}>
+      {children}
+    </Description>
+  )
 }
 
 Main.Link = function MainLink({ children, className, ...restProps }) {
@@ -49,7 +53,7 @@ Main.GoToSectionButton = function MainGoToSectionButton({
       type="button"
       {...restProps}
       className={classNames(
-        // 'resetButton',
+        'resetButton',
         gotoFirst ? 'is--first' : null,
         className
       )}

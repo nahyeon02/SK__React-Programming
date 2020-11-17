@@ -46,12 +46,12 @@ export default class Home extends Component {
   }
 
   render() {
-    const { sections, indicators, activeIndex } = this.state
+    const { sections, indicators } = this.state
 
     return (
       <>
         <HeaderContainer />
-        <IndicatorsContainer list={indicators} activeIndex={activeIndex} />
+        <IndicatorsContainer list={indicators} />
         <MainContainer list={sections} />
       </>
     )

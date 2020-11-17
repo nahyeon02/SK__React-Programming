@@ -5,12 +5,16 @@
 ## React
 
 - JSX 활용
-- props를 활용한 컴포넌트 통신
+- `props`를 활용한 컴포넌트 통신
 - 고차 컴포넌트(HOC)
 - Context API
 - 훅(Hooks)
 - 접근성(A11Y)
 
+## React Advanced
+
+- 컴파운드(Compound) 컴포넌트 패턴
+- `render props` 패턴
 ## Styled Components
 
 - Styled Components 라이브러리 설치

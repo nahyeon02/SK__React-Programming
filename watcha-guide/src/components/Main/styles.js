@@ -70,11 +70,16 @@ export const Button = styled.button`
   opacity: 0.7;
   position: absolute;
   bottom: 4rem;
-  border: 2px solid ${white};
   border-radius: 50%;
-  padding: 0.4rem !important;
   background: transparent;
   transform: scale(0.9);
+
+  // Global Style 덮어쓰기 (캐스케이딩 규칙 우선 설정)
+  // 참고: https://styled-components.com/docs/basics#pseudoelements-pseudoselectors-and-nesting
+  && {
+    border: 2px solid ${white};
+    padding: 0.4rem;
+  }
 
   &:hover {
     opacity: 1;

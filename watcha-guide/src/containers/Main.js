@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { Main } from 'components'
 import ArrowButton from 'assets/ArrowButton.svg'
+import { Main } from 'components'
 
 /* -------------------------------------------------------------------------- */
 

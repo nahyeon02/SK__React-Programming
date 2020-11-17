@@ -1,6 +1,9 @@
+import { createContext, useContext, useState } from 'react'
 import classNames from 'classnames'
 import { A11yHidden } from 'components'
 import { Container, Button } from './styles'
+
+const Context = createContext()
 
 /* -------------------------------------------------------------------------- */
 
@@ -16,32 +19,41 @@ const Indicators = ({ children, className, ...restProps }) => {
 Indicators.Group = function IndicatorsGroup({
   children,
   className,
+  list,
+  render,
   ...resetProps
 }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+
   return (
-    <ul {...resetProps} className={classNames('resetList', className)}>
-      {children}
-    </ul>
+    <Context.Provider value={{ activeIndex, setActiveIndex }}>
+      <ul {...resetProps} className={classNames('resetList', className)}>
+        {list.map((item, index) => render(item, index))}
+      </ul>
+    </Context.Provider>
   )
 }
 
 Indicators.Item = function IndicatorsItem({
-  active,
+  item,
+  index,
   children,
   className,
   ...resetProps
 }) {
+  const { activeIndex, setActiveIndex } = useContext(Context)
   return (
     <li {...resetProps}>
       <Button
         type="button"
         className={classNames(
-          // 'resetButton',
+          'resetButton',
           className,
-          active ? 'is-active' : null
+          index === activeIndex ? 'is-active' : null
         )}
+        onClick={() => setActiveIndex(index)}
       >
-        <A11yHidden className="tooltip">{children}</A11yHidden>
+        <A11yHidden className="tooltip">{item.abbr}</A11yHidden>
       </Button>
     </li>
   )

@@ -36,8 +36,11 @@ export const Button = styled.button`
   margin: 1rem;
   border: 0;
   border-radius: 50%;
-  background: rgba(240, 240, 240, 0.45);
   transition: all 0.4s ease;
+
+  && {
+    background: rgba(240, 240, 240, 0.45);
+  }
 
   &.is-active {
     background: ${colorScheme.white};
