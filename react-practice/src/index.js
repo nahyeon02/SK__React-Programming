@@ -4,7 +4,7 @@ import 'react-app-polyfill/ie11'
 // 자세히 알아보기 : https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
 import { StrictMode } from 'react'
 import { render } from 'react-dom'
-import App from '~/App'
+import App from 'App'
 
 render(
   // React.StrictMode는 애플리케이션 내의 잠재적인 문제를 알아내기 위한 도구입니다.
