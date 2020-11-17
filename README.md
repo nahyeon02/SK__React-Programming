@@ -470,6 +470,11 @@
   - [useParams()](https://reactrouter.com/web/api/Hooks/useparams)
   - [useRouteMatch()](https://reactrouter.com/web/api/Hooks/useroutematch)
 
+### 실습
+
+- [기본 라우팅](https://stackblitz.com/edit/react-hbczhm?file=index.js)
+- [중첩 라우팅](https://stackblitz.com/edit/react-7jm1zk?file=views%2FLab%2Findex.js)
+
 <br/>
 
 ## React Helmet
