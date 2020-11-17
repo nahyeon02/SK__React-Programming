@@ -1,6 +1,6 @@
 // pages/Home.js 함수 컴포넌트 작성
-import A11yHidden from '@components/A11yHidden'
-import { AccordionList } from '@components/accordion'
+import A11yHidden from 'components/A11yHidden'
+import { AccordionList } from 'components/accordion'
 import Heading from 'components/Heading'
 
 export default function Home() {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { array } from 'prop-types'
+import AccordionHandle from './AccordionHandle'
+import AccordionPanel from './AccordionPanel'
 
 export default class accordionList extends Component {
   // 속성 검사
@@ -29,16 +31,23 @@ export default class accordionList extends Component {
   // 렌더링
   render() {
     const { list } = this.props
+    const { currentIndex } = this.state
 
     return (
-      <div>
-        {list.map((item) => (
-          <li key={item.id}>
-            <h3>{item.handleText}</h3>
-            <p>{item.panelInfo}</p>
+      <ul className="accordion">
+        {list.map((item, index) => (
+          <li key={item.id} className="accordion__item">
+            <AccordionHandle
+              className="accordion__handle"
+              content={item.handleText}
+              active={currentIndex === index}
+            />
+            <AccordionPanel className="accordion__panel">
+              {item.panelInfo}
+            </AccordionPanel>
           </li>
         ))}
-      </div>
+      </ul>
     )
   }
 }
