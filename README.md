@@ -94,6 +94,362 @@
     - [useSelector()](https://react-redux.js.org/api/hooks#useselector)
     - [useDispatch()](https://react-redux.js.org/api/hooks#usedispatch)
 
+<details>
+  <summary>실습</summary>
+  <br/>
+
+  ## Redux + React Redux
+
+  별도 라이브러리 설치 없이도 Context API + useReducer 훅을 사용해 React 앱 상태를 효율적으로 관리할 수 있음을 앞서 다뤘습니다.
+  하지만 애플리케이션 규모가 커지고 관리 할 상태가 많아지면 관리가 어려워집니다. (예: 디버깅) 반면 Redux, React Redux 라이브러리를
+  설치해 활용하면 상태 관리가 효율적이고, 필요한 경우 미들웨어(Middleware)를 추가해 기능을 확장할 수 있어 유용합니다.
+
+  ### 실습
+
+  [Todo App with React Redux (실습 시작)](https://codesandbox.io/s/todo-app-with-react-redux-silseub-sijag-t291p) 프로젝트 링크를 
+  클릭한 후, 프로젝트를 Fork하여 실습을 진행합니다.
+
+  ### 라이브러리 설치
+
+  Fork한 프로젝트 실습 예제에 다음의 의존 모듈을 설치합니다.
+
+  - [redux](https://www.npmjs.com/package/redux)
+  - [react-redux](https://www.npmjs.com/package/react-redux)
+  - [redux-devtools-extension](https://www.npmjs.com/package/redux-devtools-extension)
+  - [redux-logger](https://www.npmjs.com/package/redux-logger)
+
+  ### 스토어 구조
+
+  스토어의 구조는 다음과 같은 패턴으로 작성합니다.
+
+  ```sh
+  /src/store/
+  ├── index.js
+  ├── actions/
+  │   ├── index.js
+  │   └── todos.js
+  └── reducers/
+      ├── index.js
+      └── todos.js
+  ```
+
+  ### 스토어 프로바이더 컴포넌트
+
+  Redux 라이브러리의 `createStore` 함수, React Redux 라이브러리의 `Provider` 컴포넌트, 
+  Redux DevTools Extension 라이브러리의 `composeWithDevTools` 함수를 사용한 
+  스토어 프로바이더 컴포넌트를 다음과 같이 작성합니다. ([스니펫](https://bit.ly/3kvbf0M))
+
+  **src/store/index.js**
+
+  ```js
+  import React from 'react'
+  import { createStore, applyMiddleware } from 'redux'
+  import { Provider } from 'react-redux'
+  import { composeWithDevTools } from 'redux-devtools-extension'
+  import logger from 'redux-logger'
+
+  // @reducer
+  import rootReducer from './reducers'
+
+  // @middleware
+  const middleware = [logger]
+
+  // @store
+  export const store = createStore(
+    rootReducer, 
+    composeWithDevTools(applyMiddleware(...middleware))
+  )
+
+  // @component
+  export const StoreProvider = ({children}) => (
+    <Provider store={store}>{children}</Provider>
+  )
+  ```
+
+  ### 액션
+
+  액션 및 액션 크리에이터 함수는 `actions` 디렉토리에서 관리합니다.
+
+  **src/store/actions/index.js**
+
+  ```js
+  export * from "./todos";
+  ```
+
+  **src/store/actions/todos.js**
+
+  ```js
+  // @constant
+  export const ADD_TODO = "ADD_TODO";
+  export const DONE_TODO = "DONE_TODO";
+  export const RESET_TODO = "RESET_TODO";
+
+  /* -------------------------------------------------- */
+  // @actionCreator
+
+  export const addTodo = (newTodo) => ({
+    type: ADD_TODO,
+    payload: newTodo
+  });
+
+  export const doneTodo = (doneTodoID) => ({
+    type: DONE_TODO,
+    payload: doneTodoID
+  });
+
+  export const resetTodo = () => ({
+    type: RESET_TODO
+  });
+  ```
+
+  ### 리듀서
+
+  리듀서 함수 및 루트 리듀서는 `reducers` 디렉토리에서 관리합니다.
+
+  **src/store/reducers/index.js**
+
+  ```js
+  import { combineReducers } from "redux";
+  import todosReducer from "./todos";
+
+  export default combineReducers({
+    todos: todosReducer
+  });
+  ```
+
+  **src/store/reducers/todos.js**
+
+  ```js
+  import { ADD_TODO, DONE_TODO, RESET_TODO } from "../actions";
+
+  // @initState
+  const initState = [
+    {
+      id: "ck9483y6a000z3h63ex5f5qnl",
+      doit: "React만으로 상태 관리"
+    },
+    {
+      id: "ck9484xbm00063h68cpnevol6",
+      doit: "React Redux 학습"
+    }
+  ];
+
+  // @reducer
+  export default function todosReducer(state = initState, action) {
+    const { type, payload } = action;
+
+    console.log(payload);
+
+    switch (type) {
+      case ADD_TODO:
+        return [...state, payload];
+      case DONE_TODO:
+        return state.filter((item) => item.id !== payload);
+      case RESET_TODO:
+        return initState;
+      default:
+        return state;
+    }
+  }
+  ```
+
+  ---
+
+  ### 스토어 프로바이더 래퍼 컴포넌트 설정
+
+  ```js
+  // 스토어 프로바이더 래퍼 컴포넌트 호출
+  import { StoreProvider } from './store'
+
+  // 웹 브라우저 렌더링
+  render(
+    // 스토어 프로바이더 래퍼 컴포넌트로 App 래핑
+    <StoreProvider>
+      <App />
+    </StoreProvider>,
+    rootElement
+  );
+  ```
+
+  ### TodoInput 컴포넌트
+
+  할 일을 추가하는 입력 컴포넌트에 `connect()` 고차 함수를 사용해 
+  액션 크리에이터 함수를 컴포넌트의 `props`로 전달 받도록 설정합니다.
+
+  ```js
+  // 고유 ID 생성 함수 호출
+  import cuid from "cuid";
+
+  // connect 고차 함수 호출
+  import { connect } from "react-redux";
+  ```
+
+  ```js
+  // dispatch에 바인딩 된 액션 크리에이터 함수를 props로 전달
+  import { addTodo } from "../store/actions";
+
+  const mapDispatchToProps = {
+    addTodo
+  };
+
+  // InputTodo 컴포넌트
+  const InputTodo = ({ addTodo }) => {
+    // ...
+  };
+
+  export default connect(null, mapDispatchToProps)(InputTodo);
+  ```
+
+  `todo`, `error` 상태를 업데이트 하는 `set*` 함수를 추출합니다.
+
+  ```js
+  // 인풋 컨트롤 상태 관리
+  const [todo, setTodo] = useState(initDoit);
+
+  // 오류 상태 관리
+  const [error, setError] = useState(false);
+  ```
+
+  입력 시, 컴포넌트의 상태를 `todo` 업데이트 하도록 코드를 작성합니다.
+
+  ```js
+  (
+    <input
+      type="text"
+      id="todoInput"
+      placeholder="오늘 할 일을 작성하세요."
+      value={todo.doit}
+      // 사용자 입력 시, 
+      onChange={(e) => {
+        // todo 상태 업데이트
+        setTodo({
+          doit: e.target.value
+        });
+      }}
+    />
+  )
+  ```
+
+  입력 버튼 클릭 시, 입력 내용 검사 후 오류가 없을 경우 Redux의 상태를 업데이트 하도록 코드를 작성합니다.
+
+  ```js
+  (
+    <Button
+      primary
+      id="submit_button"
+      style={{ position: "relative", top: -2 }}
+      onClick={() => {
+        // 사용자가 입력한 값이 빈 공백인 경우
+        if (todo.doit.trim().length === 0) {
+          // 컴포넌트 오류 상태 업데이트
+          setError(true);
+          // 3초 뒤에 
+          window.setTimeout(() => {
+            // 컴포넌트 상태 초기화
+            setError(false);
+            setTodo(initDoit);
+          }, 3000);
+          // 함수 종료
+          return;
+        }
+
+        // 앱 상태 업데이트 알림
+        addTodo({
+          id: cuid(),
+          doit: todo.doit
+        });
+
+        // 컴포넌트 상태 초기화
+        setTodo(initDoit);
+      }}
+    >
+      추가
+    </Button>
+  )
+  ```
+
+  ### TodoList 컴포넌트
+
+  ```js
+  import { connect } from "react-redux";
+  import { doneTodo } from "../store/actions";
+
+  const mapStateToProps = (state) => ({
+    todos: state.todos
+  });
+
+  const mapDispatchToProps = {
+    doneTodo
+  };
+
+  // TodoList 컴포넌트
+  const TodoList = ({ todos, doneTodo, resetTodo }) => {
+    // ...
+  };
+
+  export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+  ```
+
+  체크박스를 클릭할 경우, "할 일을 완료"하는 상태 업데이트를 처리하는 코드를 작성합니다.
+
+  ```js
+  (
+    <Menu.Item as="li" key={item.id}>
+      <Checkbox
+        toggle
+        label={item.doit}
+        onClick={() => doneTodo(item.id)}
+      />
+    </Menu.Item>
+  )
+  ```
+
+  ### 실습 완성
+
+  [Todo App with React Redux (실습 완성)](https://codesandbox.io/s/todo-app-with-react-redux-silseub-wanseong-nq01c) 프로젝트 완성 파일을 열어
+  완성된 코드를 참고하세요.
+
+  <br/>
+
+  ## React Redux Hooks
+
+  React 훅(Hooks) 과 마찬가지로 React Redux 또한 훅을 제공합니다. 이 훅은 함수형 컴포넌트에서만 사용 가능합니다.
+
+  - 상태 훅 : `useSelector()`
+  - 디스패치 훅 : `useDispatch()`
+
+  ### 실습
+
+  [Todo App with React Redux Hooks (실습 시작)](https://codesandbox.io/s/todo-app-with-react-redux-hooks-silseub-sijag-74mgh) 프로젝트 링크를 클릭한 후, 프로젝트를 Fork하여 실습을 진행합니다.
+
+  ### useSelector 훅
+
+  공식 문서 [사용법](https://react-redux.js.org/next/api/hooks#useselector)을 참고하세요.
+
+  ```js
+  import { useSelector } from 'react-redux'
+
+  // ...
+
+  const state = useSelector(state => state.state)
+  ```
+
+  ### useDispatch 훅
+
+  공식 문서 [사용법](https://react-redux.js.org/next/api/hooks#usedispatch)을 참고하세요.
+
+  ```js
+  import { useDispatch } from 'react-redux'
+
+  const dispatch = useDispatch()
+  ```
+
+  ### 실습 완성
+
+  [Todo App with React Redux Hooks (실습 완성)](https://codesandbox.io/s/todo-app-with-react-redux-hooks-silseub-wanseong-n150t) 프로젝트 완성 파일을 열어
+  완성된 코드를 참고하세요.
+</details>
+
 <br/>
 
 ## React Router
