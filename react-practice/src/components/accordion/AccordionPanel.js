@@ -1,11 +1,14 @@
-import React from 'react'
+import { useContext } from 'react'
+import { AccordionContext } from './AccordionList'
 
-const accordionPanel = ({ active, children, ...restProps }) => {
+const AccordionPanel = ({ index, children, ...restProps }) => {
+  const { currentIndex } = useContext(AccordionContext)
+
   return (
     <div
       {...restProps}
       style={{
-        display: active ? 'block' : 'none',
+        display: currentIndex === index ? 'block' : 'none',
       }}
     >
       {children}
@@ -13,4 +16,4 @@ const accordionPanel = ({ active, children, ...restProps }) => {
   )
 }
 
-export default accordionPanel
+export default AccordionPanel

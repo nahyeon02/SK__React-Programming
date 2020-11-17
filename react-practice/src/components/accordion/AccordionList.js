@@ -1,13 +1,25 @@
-import { useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import { array } from 'prop-types'
 import AccordionHandle from './AccordionHandle'
 import AccordionPanel from './AccordionPanel'
+import AccordionItem from './AccordionItem'
+
+// Accordion 컨텍스트 생성
+export const AccordionContext = createContext()
 
 /* -------------------------------------------------------------------------- */
 
 export default function AccordionList({ list, ...restProps }) {
   // 함수 컴포넌트의 상태로 활용 ← useState() 훅 활용
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  // <li> 실제 DOM 요소 참조 : ref
+  // const listRef = useRef(null)
+
+  // 사이트 이펙트 (useEffect)
+  useEffect(() => {
+    // console.log(listRef) // { curernt: DOMNode }
+  }, [])
 
   // useEffect 훅 (사이드 이펙트: 부작용)
   // componentDidMount -> 유사한 방식으로 작동
@@ -21,25 +33,22 @@ export default function AccordionList({ list, ...restProps }) {
   // useCallback 훅
 
   return (
-    <ul {...restProps} className="accordion">
-      {list.map((item, index) => (
-        <li key={item.id} className="accordion__item">
-          <AccordionHandle
-            className="accordion__handle"
-            content={item.handleText}
-            index={index}
-            active={currentIndex === index}
-            onChangeIndex={setCurrentIndex}
-          />
-          <AccordionPanel
-            className="accordion__panel"
-            active={currentIndex === index}
-          >
-            {item.panelInfo}
-          </AccordionPanel>
-        </li>
-      ))}
-    </ul>
+    <AccordionContext.Provider value={{ currentIndex, setCurrentIndex }}>
+      <ul {...restProps} className="accordion">
+        {list.map((item, index) => (
+          <AccordionItem key={item.id}>
+            <AccordionHandle
+              className="accordion__handle"
+              content={item.handleText}
+              index={index}
+            />
+            <AccordionPanel index={index} className="accordion__panel">
+              {item.panelInfo}
+            </AccordionPanel>
+          </AccordionItem>
+        ))}
+      </ul>
+    </AccordionContext.Provider>
   )
 }
 
