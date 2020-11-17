@@ -40,7 +40,9 @@ export default class accordionList extends Component {
             <AccordionHandle
               className="accordion__handle"
               content={item.handleText}
+              index={index}
               active={currentIndex === index}
+              onChangeIndex={this.changeCurrentIndex}
             />
             <AccordionPanel className="accordion__panel">
               {item.panelInfo}

@@ -1,12 +1,16 @@
 import React from 'react'
 
-const accordionHandle = () => {
+const AccordionHandle = ({ index, active, onChangeIndex }) => {
   return (
     <div>
-      <span role="heading">핸들 텍스트</span>
-      <button type="button">열기 (닫기)</button>
+      <span role="heading" aria-level="3">
+        핸들 텍스트
+      </span>
+      <button type="button" onClick={(e) => onChangeIndex(index)}>
+        {active ? '닫기' : '열기'}
+      </button>
     </div>
   )
 }
 
-export default accordionHandle
+export default AccordionHandle
