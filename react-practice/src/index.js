@@ -23,4 +23,22 @@ render(
 // 분석 엔드 포인트로 보냅니다. 자세히 알아보기 : https://bit.ly/CRA-vitals
 // 참고: Web Vitals 소개 https://developers-kr.googleblog.com/2020/05/Introducing-Web-Vitals.html
 
-// [동적 import() 사용해보기] reportWebVitals 또는 serviceWorker
+// [동적 import() 사용해보기] reportWebVitals 또는 serviceWorker (PWA)
+// 조건 분기 (개발 모드 또는 배포 모드)
+if (process.env.production) {
+  const usingVitals = true
+  const usingPWA = true
+  // 배포 모드
+  // Promise 객체 반환
+  // .then(data => {})
+  // .catch(error => {})
+  usingVitals &&
+    import('web-vitals')
+      .then((reportWebVitals) => reportWebVitals(console.log))
+      .catceh(({ message }) => console.error(message))
+
+  usingPWA &&
+    import('serviceWorker')
+      .then((serviceWorker) => serviceWorker.register())
+      .catceh(({ message }) => console.error(message))
+}
