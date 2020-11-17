@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { array } from 'prop-types'
 import AccordionHandle from './AccordionHandle'
 import AccordionPanel from './AccordionPanel'

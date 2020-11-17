@@ -1,6 +1,6 @@
 // pages/Home.js 함수 컴포넌트 작성
 import A11yHidden from 'components/A11yHidden'
-import { AccordionList } from 'components/accordion'
+import AccordionContainer from 'containers/accordion'
 import Heading from 'components/Heading'
 
 export default function Home() {
@@ -19,17 +19,17 @@ export default function Home() {
       </A11yHidden>
       <p>서브 콘텐츠</p>
 
-      <AccordionList
+      <AccordionContainer
         list={[
           {
             id: 'kjkwrs1',
             handleText: 'accordion 1',
-            panelInfo: 'this is panel text content 1',
+            panelContent: 'this is panel text content 1',
           },
           {
             id: 'kcsere2',
             handleText: 'accordion 2',
-            panelInfo: 'this is panel text content 2',
+            panelContent: 'this is panel text content 2',
           },
         ]}
       />
