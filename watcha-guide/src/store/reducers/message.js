@@ -14,7 +14,7 @@ export const initialState = [
 ]
 
 // 리듀서 함수
-const reducer = (state, action) => {
+const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_MESSAGE:
       return [...state, action.payload]
@@ -27,4 +27,4 @@ const reducer = (state, action) => {
   }
 }
 
-export default reducer
+export default messageReducer

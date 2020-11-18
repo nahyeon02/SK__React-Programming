@@ -1,9 +1,29 @@
 import classNames from 'classnames'
 import { Container, Brand, HomeLink, SignInLink } from './styles'
+import { connect } from 'react-redux'
+import { createMessage, changeMessage } from '../../store/actions/message'
+
+const mapStateToProps = (state) => ({
+  // 스토어의 상태 추출
+  messages: state.message,
+})
+
+const mapDispatchToProps = {
+  // 액션 크리에이터 함수
+  createMessage,
+  changeMessage,
+}
 
 /* -------------------------------------------------------------------------- */
 
-export default function Header({ children, className, ...restProps }) {
+function Header({
+  messages,
+  createMessage,
+  changeMessage,
+  children,
+  className,
+  ...restProps
+}) {
   return (
     <Container {...restProps} className={classNames('container', className)}>
       {children}
@@ -42,3 +62,5 @@ Header.SignInLink = function HeaderSignInLink({
     </SignInLink>
   )
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
