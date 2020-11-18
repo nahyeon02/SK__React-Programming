@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Modal from '~/components/Modal'
+// import Modal from '~/components/Modal'
 import {
   HeaderContainer,
   IndicatorsContainer,
@@ -15,7 +15,7 @@ export default class Home extends Component {
     activeIndex: 0,
     isLoading: false,
     hasError: false,
-    isOpenModal: false,
+    // isOpenModal: false,
   }
 
   componentDidMount() {
@@ -58,14 +58,14 @@ export default class Home extends Component {
     })
 
   render() {
-    const { sections, indicators, isOpenModal } = this.state
+    const { sections, indicators /* isOpenModal */ } = this.state
 
     return (
       <>
         <HeaderContainer />
         <IndicatorsContainer list={indicators} />
         <MainContainer list={sections} />
-        <button
+        {/* <button
           type="button"
           style={{ color: '#000' }}
           onClick={() => this.openModal()}
@@ -77,14 +77,14 @@ export default class Home extends Component {
           aria-controls="testModal"
         >
           포털을 이용해 모달 띄우기
-        </button>
+        </button> */}
         {/* 버튼이 제어하는 모달을 포털을 사용해 React 앱의 외부 영역에 렌더링 */}
-        <Modal
+        {/* <Modal
           id="testModal"
           open={isOpenModal}
           target=".modalContainer"
           onClose={this.closeModal}
-        />
+        /> */}
       </>
     )
   }
