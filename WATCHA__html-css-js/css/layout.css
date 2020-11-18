@@ -1,0 +1,17 @@
+body {
+  box-sizing: border-box;
+}
+
+body::before,
+body::after,
+body *,
+body *::before,
+body *::after {
+  box-sizing: inherit;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}

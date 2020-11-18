@@ -1,0 +1,22 @@
+:root {
+  --color-black: #141517;
+  --color-white: #fcfcff;
+  --color-accent: #F82F62;
+  --color-accent-hover: #c7254d;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+body * {
+  color: inherit
+}
+
+/* -------------------------------------------------------------------------- */
+
+body.darkTheme {
+  background: var(--color-black);
+  color: var(--color-white);
+}

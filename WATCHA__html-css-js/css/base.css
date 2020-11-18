@@ -1,0 +1,38 @@
+.resetA {
+  user-select: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.resetButton {
+  user-select: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.resetImg {
+  vertical-align: middle;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.resetDl,
+.resetDl dt,
+.resetDl dd {
+  margin: 0;
+}
+
+.resetList {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.resetAddress {
+  font-style: normal;
+}
