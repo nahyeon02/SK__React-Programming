@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { string } from 'prop-types'
 import { createPortal } from 'react-dom'
 
@@ -7,8 +7,10 @@ import { createPortal } from 'react-dom'
 // https://ko.reactjs.org/docs/portals.html#gatsby-focus-wrapper
 
 const Modal = ({ open = false, target, onClose }) => {
-  // 실제 DOM 객체 참조
+  // 컴포넌트 상태, Setter 함수
   const [targetNode, setTargetNode] = useState(null)
+  // 실제 DOM 객체 참조
+  const paragraphRef = useRef(null)
 
   // 사이드 이펙트
   // 가상 DOM이 실제 DOM에 마운트 된 이후 실행
@@ -19,9 +21,19 @@ const Modal = ({ open = false, target, onClose }) => {
     setTargetNode(targetEl)
   }, [target])
 
+  useEffect(() => {
+    if (open) {
+      const { current: pNode } = paragraphRef
+      console.log(pNode)
+      window.setTimeout(() => {
+        pNode.style.color = 'blue'
+      }, 2000)
+    }
+  }, [open])
+
   const reactElement = (
     <div className="modal" lang="en">
-      <p>
+      <p ref={paragraphRef}>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum qui est
         numquam enim, totam et. Dolor explicabo at quidem, deleniti natus, rem
         consequatur excepturi facere cumque, quod quia nemo quae?
