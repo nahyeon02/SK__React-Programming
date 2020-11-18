@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import Modal from '~/components/Modal'
 import {
   HeaderContainer,
   IndicatorsContainer,
@@ -14,6 +15,7 @@ export default class Home extends Component {
     activeIndex: 0,
     isLoading: false,
     hasError: false,
+    isOpenModal: false,
   }
 
   componentDidMount() {
@@ -45,14 +47,36 @@ export default class Home extends Component {
     }
   }
 
+  openModal = () =>
+    this.setState({
+      isOpenModal: true,
+    })
+
+  closeModal = () =>
+    this.setState({
+      isOpenModal: false,
+    })
+
   render() {
-    const { sections, indicators } = this.state
+    const { sections, indicators, isOpenModal } = this.state
 
     return (
       <>
         <HeaderContainer />
         <IndicatorsContainer list={indicators} />
         <MainContainer list={sections} />
+        <button
+          type="button"
+          style={{ color: '#000' }}
+          onClick={() => this.openModal()}
+        >
+          포털을 이용해 모달 띄우기
+        </button>
+        <Modal
+          open={isOpenModal}
+          target=".modalContainer"
+          onClose={this.closeModal}
+        />
       </>
     )
   }
