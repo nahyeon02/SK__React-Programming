@@ -2,10 +2,11 @@ import 'react-app-polyfill/ie11'
 
 // React v17 부터 새로운 JSX 트랜스폼을 사용하므로 JSX 사용 시, React를 불러오지 않아도 됩니다.
 // 자세히 알아보기 : https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
-import { StrictMode } from 'react'
-import { render } from 'react-dom'
+import React, { StrictMode } from 'react'
+import ReactDOM, { render } from 'react-dom'
 import { GlobalStyles } from './GlobalStyles'
 import App from '~/App'
+import ko from 'axe-core/locales/ko.json'
 
 render(
   // React.StrictMode는 애플리케이션 내의 잠재적인 문제를 알아내기 위한 도구입니다.
@@ -27,5 +28,16 @@ if (process.env.production) {
   // 참고: Web Vitals 소개 https://developers-kr.googleblog.com/2020/05/Introducing-Web-Vitals.html
   import('./reportWebVitals')
     .then((reportWebVitals) => reportWebVitals(console.log))
+    .catch(({ message }) => console.error(message))
+} else {
+  const TIMEOUT = 1000
+  const CONFIG = {
+    locale: ko, // json
+  }
+  // 개발 중에서만 접근성 자동 검사
+  // 오류가 발생하면 문제를 해결하면서 접근성 공부도 하고
+  // 품질도 높은 서비스도 만들고...
+  import('@axe-core/react')
+    .then(({ default: axe }) => axe(React, ReactDOM, TIMEOUT, CONFIG))
     .catch(({ message }) => console.error(message))
 }

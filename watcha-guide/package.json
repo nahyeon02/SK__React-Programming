@@ -28,6 +28,7 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "@axe-core/react": "^4.0.0",
     "@craco/craco": "^5.8.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
