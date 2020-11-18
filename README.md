@@ -44,6 +44,16 @@
 
 <br/>
 
+## Styled Components
+
+- [`props` 설정](https://xn--xy1bk56a.run/react-master/lecture/sc-adapting-props.html)
+- 스타일 확장
+- 가상 클래스/요소, 중첩 규칙
+- 정적/동적 `props` 할당
+- 믹스인 (Mixin)
+- 글로벌(Global) 스타일
+- [글로벌 스타일 보다 스타일 컴포넌트의 스타일이 우선권(Cascading)을 가지지 못하는 경우](https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity)
+
 ## React Basic
 
 - 고차 컴포넌트(HOC)
