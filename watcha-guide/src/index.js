@@ -8,6 +8,35 @@ import { GlobalStyles } from './GlobalStyles'
 import App from '~/App'
 import ko from 'axe-core/locales/ko.json'
 
+import store from 'store'
+
+// console.log('store', store)
+
+function draw() {
+  console.log('드로잉 중...')
+  // 상태 읽기(getState) 스토어가 관리 중인 상태를 읽어올 때 사용
+  console.log('상태: ', store.getState())
+}
+
+// 생성된 스토어 객체
+// 구독(subscribe) return () => {} → 구독 취소(unsubscribe)
+store.subscribe(draw)
+// const unsubscribe = store.subscribe(draw)
+// console.log(typeof unsubscribe) // expect: function
+
+// 알림(요청, dispatch) ← 액션({type[, payload]} 객체)
+// 3초 뒤에 디스패치 요청
+window.setTimeout(() => {
+  store.dispatch({
+    type: 'DRAWING',
+    payload: {
+      message: 'after drawing',
+    },
+  })
+}, 3000)
+
+// 리듀서 교체 (replace reducer)
+
 render(
   // React.StrictMode는 애플리케이션 내의 잠재적인 문제를 알아내기 위한 도구입니다.
   // Fragment와 같이 UI를 렌더링하지 않으며, 자손들에 대한 부가적인 검사와 경고를 활성화합니다.
@@ -37,7 +66,7 @@ if (process.env.production) {
   // 개발 중에서만 접근성 자동 검사
   // 오류가 발생하면 문제를 해결하면서 접근성 공부도 하고
   // 품질도 높은 서비스도 만들고...
-  import('@axe-core/react')
-    .then(({ default: axe }) => axe(React, ReactDOM, TIMEOUT, CONFIG))
-    .catch(({ message }) => console.error(message))
+  // import('@axe-core/react')
+  //   .then(({ default: axe }) => axe(React, ReactDOM, TIMEOUT, CONFIG))
+  //   .catch(({ message }) => console.error(message))
 }
