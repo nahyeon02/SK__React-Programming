@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { string } from 'prop-types'
 import { createPortal } from 'react-dom'
+import A11yHidden from '../A11yHidden'
 
 /* -------------------------------------------------------------------------- */
 // 접근성 관련 주제 : 포털 사용할 필요
 // https://ko.reactjs.org/docs/portals.html#gatsby-focus-wrapper
 
-const Modal = ({ open = false, target, onClose }) => {
+const Modal = ({ open = false, target, id, onClose }) => {
   // 컴포넌트 상태, Setter 함수
   const [targetNode, setTargetNode] = useState(null)
   // 실제 DOM 객체 참조
@@ -32,7 +33,23 @@ const Modal = ({ open = false, target, onClose }) => {
   }, [open])
 
   const reactElement = (
-    <div className="modal" lang="en">
+    <div
+      // 다이얼로그 역할 부여
+      role="dialog"
+      // 모달(Dim 처리) 임을 명시
+      aria-modal="true"
+      // id 속성 모달을 제어하는 버튼과 연결 됨
+      id={id}
+      // 다이얼로그 제목 연결
+      aria-labelledby="dialog__headline"
+      className="modal"
+      lang="en"
+    >
+      {/* 다이얼로그 제목이지만 화면에서는 감춤, 스크린 리더는 읽음 */}
+      <A11yHidden as="h4" id="dialog__headline">
+        Modal Headline
+      </A11yHidden>
+
       <p ref={paragraphRef}>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum qui est
         numquam enim, totam et. Dolor explicabo at quidem, deleniti natus, rem
@@ -67,6 +84,7 @@ const Modal = ({ open = false, target, onClose }) => {
 
 Modal.propTypes = {
   target: string.isRequired,
+  id: string.isRequired,
 }
 
 export default Modal
